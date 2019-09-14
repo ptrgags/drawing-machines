@@ -12,12 +12,17 @@ export default class Machine {
         this.is_sorted = true;
 
         // Initialize the machine based on parameters
-        this.init(parameters);
+        this.init({...this.default_parameters, ...parameters});
+    }
+    
+    // Return some default parameters to set an example to the user 
+    get default_parameters() {
+        return {};
     }
 
     add_edge(parent_id, child_id) {
         if (!this.edges.has(parent_id)) {
-            this.edges.set(parent_id, [])
+            this.edges.set(parent_id, []);
         }
 
         this.edges.get(parent_id).push(child_id);
@@ -96,7 +101,7 @@ export default class Machine {
         }
 
         for (let vertex of this.vertices) {
-            return this.component_table.get(vertex);
+            yield this.component_table.get(vertex);
         }
     }
     

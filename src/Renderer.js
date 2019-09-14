@@ -1,8 +1,8 @@
-import { Engine } from "@babylonjs/core/Engines/engine";
-import { Scene } from "@babylonjs/core/scene";
-import { Vector3 } from "@babylonjs/core/Maths/math";
-import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
-import { HemisphericLight } from "@babylonjs/core/Lights/hemisphericLight";
+import { Engine } from '@babylonjs/core/Engines/engine';
+import { Scene } from '@babylonjs/core/scene';
+import { Vector3 } from '@babylonjs/core/Maths/math';
+import { ArcRotateCamera } from '@babylonjs/core/Cameras/arcRotateCamera';
+import { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
 
 export default class Renderer {
     constructor() {
@@ -13,7 +13,7 @@ export default class Renderer {
         this.camera = new ArcRotateCamera(
             'camera', 0, Math.PI / 3, 10, Vector3.Zero(), this.scene);
         this.camera.allowUpsideDown = false;
-        this.camera.attachControl(canvas, true); 
+        this.camera.attachControl(this.canvas, true); 
 
         this.light = new HemisphericLight(
             'light', new Vector3(0, 1, 0), this.scene);

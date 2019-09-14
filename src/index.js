@@ -1,10 +1,10 @@
 import Renderer from './Renderer';
-import Machine from './machines/Machine';
+import GearTrain from './machines/GearTrain';
 
-const dummy_machine = new Machine();
+const machine = new GearTrain();
 
 const renderer = new Renderer();
 renderer.add_machines([
-    dummy_machine
+    machine
 ]);
 renderer.start();
