@@ -1,0 +1,16 @@
+{
+  "name": "drawing-machines",
+  "version": "1.0.0",
+  "description": "Drawing Machine Simulations (2019)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/pcg34-drexel/drawing-machines.git"
+  },
+  "author": "Peter Gagliardi",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/pcg34-drexel/drawing-machines#readme"
+}
