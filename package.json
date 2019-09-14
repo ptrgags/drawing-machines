@@ -4,7 +4,9 @@
   "description": "Drawing Machine Simulations (2019)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "develop": "webpack --mode development --watch",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -12,5 +14,14 @@
   },
   "author": "Peter Gagliardi",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/pcg34-drexel/drawing-machines#readme"
+  "homepage": "https://bitbucket.org/pcg34-drexel/drawing-machines#readme",
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.0.4",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^4.0.3",
+    "@babylonjs/materials": "^4.0.3"
+  }
 }
