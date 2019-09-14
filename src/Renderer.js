@@ -26,6 +26,10 @@ export default class Renderer {
         this.machine_primitive = undefined;
     }
 
+    add_machines(new_machines) {
+        this.machines.push(...new_machines);
+    }
+
     get current_machine() {
         return this.machines[this.active_machine];
     }
@@ -34,16 +38,21 @@ export default class Renderer {
         const dt = this.engine.getDeltaTime() / 1000;
         this.t += dt;
 
-        // this.current_machine.update(this.t);
+        if (this.current_machine !== undefined) {
+            this.current_machine.update(this.t);
+        }
     }
 
     build() {
+        if (this.current_machine === undefined) {
+            return;
+        }
+
         if (this.machine_primitive !== undefined) {
             this.machine_primitive.dispose();
         }
-        /*
-        this.machine_primitive = this.current_machine.build(this.scene);
-        */ 
+        
+        this.machine_primitive = this.current_machine.build(this.scene);  
     }
 
     start() {
