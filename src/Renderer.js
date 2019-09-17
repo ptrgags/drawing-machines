@@ -63,5 +63,4 @@ export default class Renderer {
             this.scene.render();
         });
     }
-
 }

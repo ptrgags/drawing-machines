@@ -1,6 +1,7 @@
 import { Vector3 } from '@babylonjs/core/Maths/math';
 
 import Machine from './Machine';
+import Point from '../parts/Point';
 
 /**
  * Simple gear train with a sliding arm connecting two of the gears. The
@@ -29,5 +30,12 @@ export default class GearTrain extends Machine {
     }
 
     init(parameters) {
+        const origin = new Point({
+            offset: parameters.camera_offset,
+            show_offset: true
+        });
+        this.add_part(origin);
+
+        return origin;
     }
 }
