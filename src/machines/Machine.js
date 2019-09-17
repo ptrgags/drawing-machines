@@ -86,7 +86,7 @@ export default class Machine {
 
         // Reversing the path gives the topological sort order, i.e. the
         // order in which we will update the parts respecting dependencies
-        path.reverse();
+        //path.reverse();
         this.vertices = path;
     }
 
@@ -98,6 +98,7 @@ export default class Machine {
     * parts() {
         if (!this.is_sorted) {
             this.topological_sort();
+            this.is_sorted = true;
         }
 
         for (let vertex of this.vertices) {

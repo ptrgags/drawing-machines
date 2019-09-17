@@ -35,7 +35,9 @@ export default class Point extends Part {
     build(scene) {
         const translate = new TransformNode(`${this.id}-translate`, scene);
         translate.position = this.offset;
-        //translate.parent = this.parent;
+        if (this.parent !== undefined) {
+            translate.parent = this.parent.node;
+        }
         this.translate = translate;
 
         if (this.show_offset) {

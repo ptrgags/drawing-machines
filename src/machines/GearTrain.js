@@ -2,6 +2,7 @@ import { Vector3 } from '@babylonjs/core/Maths/math';
 
 import Machine from './Machine';
 import Point from '../parts/Point';
+import Wheel from '../parts/Wheel';
 
 /**
  * Simple gear train with a sliding arm connecting two of the gears. The
@@ -25,7 +26,7 @@ export default class GearTrain extends Machine {
             // Offset of pen relative to the arm's local coordinates
             pen_offset: new Vector3(1, 0, -2),
             // Offset of the root coordinate system 
-            camera_offset: new Vector3(0, 0, 0)
+            camera_offset: new Vector3(0, 0.5, 0)
         }
     }
 
@@ -34,7 +35,18 @@ export default class GearTrain extends Machine {
             offset: parameters.camera_offset,
             show_offset: true
         });
+
+        const input_gear = new Wheel({
+            parent: origin.to_joint('translate'),
+            radius: 1,
+            offset: Vector3.Zero(),
+            initial_angle: 0,
+            half_height: 0.1,
+            angular_velocity: 1
+        });
+
         this.add_part(origin);
+        this.add_part(input_gear);
 
         return origin;
     }

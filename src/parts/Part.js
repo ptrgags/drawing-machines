@@ -1,3 +1,5 @@
+import Joint from "../Joint";
+
 let part_count = 0;
 
 export default class Part {
@@ -21,5 +23,9 @@ export default class Part {
 
     update(t) {
 
+    }
+
+    to_joint(node_name) {
+        return new Joint(this, node_name);
     }
 }
