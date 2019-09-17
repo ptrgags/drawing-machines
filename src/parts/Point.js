@@ -23,6 +23,14 @@ export default class Point extends Part {
         return 'point';
     }
 
+    get parents() {
+        if (this.parent !== undefined) {
+            return [this.parent.part];
+        }
+
+        return [];
+    }
+
     make_line(scene) {
         return MeshBuilder.CreateLines(`${this.id}-line`, {
             points: [

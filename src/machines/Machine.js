@@ -44,6 +44,12 @@ export default class Machine {
         }
     }
 
+    add_parts(parts) {
+        for (let part of parts) {
+            this.add_part(part);
+        }
+    }
+
     postorder(vertex, visited, results) {
         // Skip if we've already seen this node
         if (visited.has(vertex)) {

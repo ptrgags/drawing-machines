@@ -24,6 +24,9 @@ export default class GearTrain extends Machine {
             angular_velocity: 1,
             // Which gears are connected by the arm
             arm_gears: [0, 2],
+            // Offsets of the endpoints of the arm with respect to the 
+            // gear center before rotation
+            arm_offsets: [new Vector3(0.5, 1, 0.5), new Vector3(1, 1, 1)],
             // Offset of pen relative to the arm's local coordinates
             pen_offset: new Vector3(1, 0, -2),
             // Offset of the root coordinate system 
@@ -66,6 +69,27 @@ export default class GearTrain extends Machine {
         return gears;
     }
 
+    make_arm_points(parameters, gears) {
+        const [start_idx, end_idx] = parameters.arm_gears;
+        const [start_offset, end_offset] = parameters.arm_offsets;
+        const start_gear = gears[start_idx];
+        const end_gear = gears[end_idx];
+
+        const start_point = new Point({
+            parent: start_gear.to_joint('rotate'),
+            offset: start_offset,
+            show_offset: true
+        });
+
+        const end_point = new Point({
+            parent: end_gear.to_joint('rotate'),
+            offset: end_offset,
+            show_offset: true
+        });
+
+        return [start_point, end_point];
+    }
+
     init(parameters) {
         const origin = new Point({
             offset: parameters.camera_offset,
@@ -73,11 +97,11 @@ export default class GearTrain extends Machine {
         });
 
         const gears = this.make_gears(parameters, origin);
+        const arm_points = this.make_arm_points(parameters, gears);
 
         this.add_part(origin);
-        for (let gear of gears) {
-            this.add_part(gear);
-        }
+        this.add_parts(gears);
+        this.add_parts(arm_points);
 
         return origin;
     }
