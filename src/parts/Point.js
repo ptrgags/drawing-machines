@@ -34,7 +34,7 @@ export default class Point extends Part {
     make_line(scene) {
         return MeshBuilder.CreateLines(`${this.id}-line`, {
             points: [
-                new Vector3.Zero(),
+                Vector3.Zero(),
                 this.offset.negate()
             ]
         }, scene);

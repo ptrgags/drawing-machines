@@ -4,6 +4,7 @@ import Machine from './Machine';
 import Point from '../parts/Point';
 import Wheel from '../parts/Wheel';
 import DrivenWheel from '../parts/DrivenWheel';
+import Arm from '../parts/Arm';
 
 /**
  * Simple gear train with a sliding arm connecting two of the gears. The
@@ -99,9 +100,14 @@ export default class GearTrain extends Machine {
         const gears = this.make_gears(parameters, origin);
         const arm_points = this.make_arm_points(parameters, gears);
 
+        const arm = new Arm({
+            parents: arm_points.map(x => x.to_joint('translate')),  
+        });
+
         this.add_part(origin);
         this.add_parts(gears);
         this.add_parts(arm_points);
+        this.add_part(arm);
 
         return origin;
     }
