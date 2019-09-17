@@ -3,6 +3,7 @@ import { Vector3 } from '@babylonjs/core/Maths/math';
 import Machine from './Machine';
 import Point from '../parts/Point';
 import Wheel from '../parts/Wheel';
+import DrivenWheel from '../parts/DrivenWheel';
 
 /**
  * Simple gear train with a sliding arm connecting two of the gears. The
@@ -45,8 +46,17 @@ export default class GearTrain extends Machine {
             angular_velocity: 1
         });
 
+        const driven_gear = new DrivenWheel({
+            parent: input_gear.to_joint('translate'),
+            radius: 2,
+            offset_angle: Math.PI / 4,
+            initial_angle: 0,
+            half_height: 0.1,
+        });
+
         this.add_part(origin);
         this.add_part(input_gear);
+        this.add_part(driven_gear);
 
         return origin;
     }

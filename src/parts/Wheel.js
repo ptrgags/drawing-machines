@@ -14,6 +14,7 @@ export default class Wheel extends Part {
         this.radius = parameters.radius;
         this.half_height = parameters.half_height;
         this.offset = parameters.offset;
+        this.initial_angle = parameters.initial_angle;
         this.angular_velocity = parameters.angular_velocity;
         this.parent = parameters.parent;
 
@@ -29,6 +30,10 @@ export default class Wheel extends Part {
 
     get part_type() {
         return "wheel";
+    }
+
+    get parents() {
+        return [this.parent.part];
     }
 
     build(scene) {
@@ -57,7 +62,7 @@ export default class Wheel extends Part {
     }
 
     update(t) {
-        this.angle = this.angular_velocity * t;
+        this.angle = this.angular_velocity * t + this.initial_angle;
         this.rotate.rotation.y = this.angle;
     }
 }
