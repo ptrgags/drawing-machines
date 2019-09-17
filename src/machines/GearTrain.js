@@ -104,10 +104,17 @@ export default class GearTrain extends Machine {
             parents: arm_points.map(x => x.to_joint('translate')),  
         });
 
+        const pen = new Point({
+            parent: arm.to_joint('rotate'),
+            offset: parameters.pen_offset,
+            show_offset: true
+        });
+
         this.add_part(origin);
         this.add_parts(gears);
         this.add_parts(arm_points);
         this.add_part(arm);
+        this.add_part(pen);
 
         return origin;
     }
