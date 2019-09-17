@@ -13,7 +13,7 @@ export default class DrivenWheel extends Wheel {
         // The angular velocity depends on the previous wheel in the chain
         const parent_part = this.parent.part;
         this.angular_velocity = (
-            parent_part.radius / this.radius * parent_part.angular_velocity);
+            -parent_part.radius / this.radius * parent_part.angular_velocity);
 
         // Put the new wheel next to the previous one
         const theta = parameters.offset_angle;

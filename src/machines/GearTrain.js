@@ -31,32 +31,53 @@ export default class GearTrain extends Machine {
         }
     }
 
+    make_gears(parameters, origin) {
+        const gears = [];
+
+        const half_height = parameters.half_height;
+        const radii = parameters.radii;
+
+        for (let i = 0; i < radii.length; i++) {
+            const radius = radii[i];
+            const initial_angle = parameters.initial_angles[i];
+
+            if (i === 0) {
+                const input_gear = new Wheel({
+                    parent: origin.to_joint('translate'),
+                    radius: radius,
+                    offset: Vector3.Zero(),
+                    initial_angle: initial_angle,
+                    half_height: half_height,
+                    angular_velocity: parameters.angular_velocity
+                });
+                gears.push(input_gear);
+            } else {
+                const driven_gear = new DrivenWheel({
+                    parent: gears[i - 1].to_joint('translate'),
+                    radius: radius,
+                    offset_angle: parameters.contact_angles[i - 1],
+                    initial_angle: initial_angle,
+                    half_height: half_height,
+                });
+                gears.push(driven_gear);
+            }
+        }
+
+        return gears;
+    }
+
     init(parameters) {
         const origin = new Point({
             offset: parameters.camera_offset,
             show_offset: true
         });
 
-        const input_gear = new Wheel({
-            parent: origin.to_joint('translate'),
-            radius: 1,
-            offset: Vector3.Zero(),
-            initial_angle: 0,
-            half_height: 0.1,
-            angular_velocity: 1
-        });
-
-        const driven_gear = new DrivenWheel({
-            parent: input_gear.to_joint('translate'),
-            radius: 2,
-            offset_angle: Math.PI / 4,
-            initial_angle: 0,
-            half_height: 0.1,
-        });
+        const gears = this.make_gears(parameters, origin);
 
         this.add_part(origin);
-        this.add_part(input_gear);
-        this.add_part(driven_gear);
+        for (let gear of gears) {
+            this.add_part(gear);
+        }
 
         return origin;
     }
