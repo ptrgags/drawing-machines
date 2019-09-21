@@ -5,6 +5,7 @@ import Point from '../parts/Point';
 import Wheel from '../parts/Wheel';
 import DrivenWheel from '../parts/DrivenWheel';
 import Arm from '../parts/Arm';
+import Trace from '../parts/Trace';
 
 /**
  * Simple gear train with a sliding arm connecting two of the gears. The
@@ -22,7 +23,7 @@ export default class GearTrain extends Machine {
             // Angle of the line connecting a previous gear to the next gear
             contact_angles: [Math.PI / 4, -Math.PI / 4],
             // Angular velocity of the input gear
-            angular_velocity: 1,
+            angular_velocity: 5,
             // Which gears are connected by the arm
             arm_gears: [0, 2],
             // Offsets of the endpoints of the arm with respect to the 
@@ -110,11 +111,17 @@ export default class GearTrain extends Machine {
             show_offset: true
         });
 
+        const trace = new Trace({
+            source: pen.to_joint('translate'),
+            num_points: 1000
+        });
+
         this.add_part(origin);
         this.add_parts(gears);
         this.add_parts(arm_points);
         this.add_part(arm);
         this.add_part(pen);
+        this.add_part(trace);
 
         return origin;
     }
