@@ -29,8 +29,7 @@ export default class Arm extends Part {
         const w = p2.subtract(p1);
         const arm_len = w.length();
 
-        const M1 = this.start_parent.matrix;
-        const M1_inv = Matrix.Invert(M1);
+        const M1_inv = this.start_parent.inverse_matrix;
         const w2 = Vector3.TransformCoordinates(p2, M1_inv);
         const angle = -Math.atan2(w2.z, w2.x);
 

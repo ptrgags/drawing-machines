@@ -1,4 +1,4 @@
-import { Vector3 } from "@babylonjs/core/Maths/math";
+import { Vector3, Matrix } from "@babylonjs/core/Maths/math";
 
 export default class Joint {
     constructor(part, node_name) {
@@ -12,6 +12,10 @@ export default class Joint {
 
     get matrix() {
         return this.node.getWorldMatrix();
+    }
+
+    get inverse_matrix() {
+        return Matrix.Invert(this.matrix);
     }
 
     get position() {

@@ -15,24 +15,26 @@ export default class GearTrain extends Machine {
     get default_parameters() {
         return {
             // Radii of each gear
-            radii: [1, 2, 3],
+            radii: [1, 2, 3, 5],
             // Half the thickness of all gears
             half_height: 0.1,
             // Initial angles of each gear
-            initial_angles: [0, 0, 0],
+            initial_angles: [0, 0, 0, 0],
             // Angle of the line connecting a previous gear to the next gear
-            contact_angles: [Math.PI / 4, -Math.PI / 4],
+            contact_angles: [Math.PI / 4, -Math.PI / 4, 0],
             // Angular velocity of the input gear
             angular_velocity: 5,
             // Which gears are connected by the arm
-            arm_gears: [0, 2],
+            arm_gears: [0, 3],
             // Offsets of the endpoints of the arm with respect to the 
             // gear center before rotation
             arm_offsets: [new Vector3(0.5, 1, 0.5), new Vector3(1, 1, 1)],
             // Offset of pen relative to the arm's local coordinates
-            pen_offset: new Vector3(1, 0, -2),
+            pen_offset: new Vector3(3, 0, 2.5),
             // Offset of the root coordinate system 
-            camera_offset: new Vector3(0, 0.5, 0)
+            camera_offset: new Vector3(0, 0.5, 0),
+            // How many points in the trace
+            trace_length: 1000,
         }
     }
 
@@ -67,7 +69,6 @@ export default class GearTrain extends Machine {
                 gears.push(driven_gear);
             }
         }
-
         return gears;
     }
 
@@ -113,7 +114,9 @@ export default class GearTrain extends Machine {
 
         const trace = new Trace({
             source: pen.to_joint('translate'),
-            num_points: 1000
+            reference_frame: gears[1].to_joint('rotate'),
+            parent: gears[1].to_joint('rotate'),
+            num_points: parameters.trace_length
         });
 
         this.add_part(origin);

@@ -55,14 +55,34 @@ export default class Trace extends Part {
         const polyline = MeshBuilder.CreateLines(`${this.id}-polyline`, {
             updatable: true,
             points: points
-        }, scene); 
+        }, scene);
+        
+        if (this.parent !== undefined) {
+            polyline.parent = this.parent.node;
+        }
+
+
         this.polyline_primitive = polyline;
         this.points = points;
     }
 
+    compute_point() {
+        // Compute the position of the pen in world space
+        let position = this.source.position;
+
+        // Transform things into the "paper" coordinate frame. For a turntable
+        // drawing machine, this could be a rotating reference frame.
+        if (this.reference_frame !== undefined) {
+            const M_paper = this.reference_frame.inverse_matrix; 
+            position = Vector3.TransformCoordinates(position, M_paper); 
+        }
+
+        return position;
+    }
+
     update(t) {
         const points = this.points;
-        const point = this.source.position;
+        const point = this.compute_point();
         points.push(point);
         points.shift();
 
