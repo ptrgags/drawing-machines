@@ -50,6 +50,7 @@ export default class Oscillator extends Part {
         }, scene);
         sphere.material = new GridMaterial(`${this.id}-mat-grid`, scene);
         sphere.parent = translate_wave;
+        this.sphere_primitive = sphere;
 
         const line = MeshBuilder.CreateLines(`${this.id}-line`, {
             points: [
@@ -58,6 +59,7 @@ export default class Oscillator extends Part {
             ]
         }, scene);
         line.parent = translate;
+        this.line_primitive = line;
     }
 
     update(t) { 

@@ -3,7 +3,7 @@ import { Vector3 } from '@babylonjs/core/Maths/math';
 import Machine from './Machine';
 import Point from '../parts/Point';
 import Oscillator from '../parts/Oscillator';
-//import Centroid from '../parts/Centroid';
+import Centroid from '../parts/Centroid';
 import Trace from '../parts/Trace';
 
 /*
@@ -155,27 +155,25 @@ export default class AverageBox extends Machine {
     }
 
     init(parameters) {
-        const origin = new Point({});
+        const origin = new Point({
+            offset: Vector3.Zero(),
+            show_offset: false
+        });
         const oscs = this.make_oscillators(parameters, origin);
-        /*
         const centroid = new Centroid({
             points: oscs.map(x => x.to_joint('translate_wave')),
             origin: origin.to_joint('translate'),
             weights: parameters.weights
         });
-        const pen = new Point({
-            parent: centroid.to_joint('translate'),
-        });
         const trace = new Trace({ 
-            source: pen.to_joint('translate')
+            source: centroid.to_joint('translate'),
             num_points: parameters.trace_length
         });
-         */
 
         this.add_part(origin);
         this.add_parts(oscs);
-        //this.add_part(pen);
-        //this.add_part(trace);
+        this.add_part(centroid);
+        this.add_part(trace);
 
         return origin;
     }
