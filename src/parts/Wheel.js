@@ -56,7 +56,7 @@ export default class Wheel extends Part {
             diameter: 2,
             height: 2
         }, scene);
-        wheel.material = new GridMaterial("grid", scene);
+        wheel.material = new GridMaterial(`${this.id}-mat-grid`, scene);
         wheel.parent = scale;
         this.wheel_primitive = wheel;
     }
