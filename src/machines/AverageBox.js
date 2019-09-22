@@ -6,12 +6,6 @@ import Oscillator from '../parts/Oscillator';
 import Centroid from '../parts/Centroid';
 import Trace from '../parts/Trace';
 
-/*
-import Wheel from '../parts/Wheel';
-import DrivenWheel from '../parts/DrivenWheel';
-import Arm from '../parts/Arm';
-*/
-
 /**
  * 12 points oscillating on the edges of a cuboid. The curve is defined to be
  * the centroid of all 12 positions.
