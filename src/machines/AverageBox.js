@@ -23,6 +23,9 @@ export default class AverageBox extends Machine {
             // will also be the amplitudes of the oscillation
             size: new Vector3(3, 3, 3),
             // Frequencies of each point's oscillation in cycles/sec
+            //frequencies: [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3],
+            frequencies: [1, 2, 23, 11, 7, 43, 13, 2, 3, 4, 5, 6].map(x => x / 100),
+            /*
             frequencies: [
                 0.1, 
                 0.2, 
@@ -37,12 +40,13 @@ export default class AverageBox extends Machine {
                 1.1, 
                 1.2
             ],
+            */
             // Weights of each point since the centroid is a weighted avverage
             weights: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             // Phases of oscillation to tweak things further
             phases: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             // How many points in the trace
-            trace_length: 1000,
+            trace_length: 10000,
         }
     }
 
