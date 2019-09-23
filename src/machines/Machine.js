@@ -20,6 +20,10 @@ export default class Machine {
         return {};
     }
 
+    get time_step() {
+        return 1 / 60;
+    }
+
     add_edge(parent_id, child_id) {
         if (!this.edges.has(parent_id)) {
             this.edges.set(parent_id, []);

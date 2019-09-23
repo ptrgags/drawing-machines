@@ -34,7 +34,7 @@ export default class Renderer {
     }
 
     on_frame() {
-        const dt = this.engine.getDeltaTime() / 1000;
+        const dt = this.current_machine.time_step;
         this.t += dt;
 
         if (this.current_machine !== undefined) {
