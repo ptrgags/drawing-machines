@@ -14,10 +14,16 @@ export default class Machine {
         // Initialize the machine based on parameters
         this.init({...this.default_parameters, ...parameters});
     }
+
+    get machine_type() {
+        return 'machine';
+    }
     
     // Return some default parameters to set an example to the user 
     get default_parameters() {
-        return {};
+        return {
+            parent: undefined,
+        };
     }
 
     get time_step() {
@@ -117,7 +123,7 @@ export default class Machine {
     }
     
     init(parameters) {
-        // Subclasses will initialize the primitives here
+        // Subclasses will initialize the parts
     }
 
     build(scene) {
