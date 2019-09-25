@@ -7,6 +7,12 @@ import "@babylonjs/core/Meshes/meshBuilder";
 import Part from './Part';
 
 export default class Centroid extends Part {
+    get default_parameters() {
+        return {
+            points: [],
+        }
+    }
+
     constructor(parameters) {
         super(parameters);
 

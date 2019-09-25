@@ -11,7 +11,7 @@ export default class Prefab extends Part {
     get default_parameters() {
         return {
             // The parent part
-            parent: undefined;
+            parent: undefined,
             // Machine class that this prefab represents (required)
             machine_class: undefined,
             // Parameters to pass to the machine
@@ -22,7 +22,10 @@ export default class Prefab extends Part {
     init(parameters) {
         super.init(parameters);
         const MachineClass = required(parameters, 'machine_class');
-        this.machine = new MachineClass(parameters.machine_parameters);
+        this.machine = new MachineClass({
+            parent: this.parent,
+            ...parameters.machine_parameters
+        });
     }
 
     get part_type() {
@@ -38,10 +41,10 @@ export default class Prefab extends Part {
     }
 
     to_joint(node_name) {
-        const [part_id, ...rest]  = node_name.split('.');
+        const [part_label, ...rest]  = node_name.split('.');
         const part_node = rest.join('.');
 
-        const part = this.machine.get_part(part_id);
+        const part = this.machine.find_part(part_label);
         return part.to_joint(part_node);
     }
 }

@@ -40,6 +40,7 @@ export default class PartViewer extends Machine {
             parent: origin.to_joint('translate'), 
             ...parameters.part_parameters
         });
+
         const trace = new Trace({ 
             source: part.to_joint(parameters.trace_joint),
             num_points: parameters.trace_length

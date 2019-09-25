@@ -13,6 +13,8 @@ export default class Trace extends Part {
             source: undefined,
             // The reference frame to draw on (the 3D paper) (optional)
             target: undefined,
+            // The reference frame to use as the origin
+            origin: undefined,
             // Number of points in the polyline
             num_points: 1000,
             // Color of the trace (default orange)
@@ -23,6 +25,7 @@ export default class Trace extends Part {
     init(parameters) {
         this.source = required(parameters, 'source');
         this.target = parameters.target;
+        this.origin = parameters.origin;
 
         this.points = [];
         this.num_points = parameters.num_points;
@@ -53,6 +56,10 @@ export default class Trace extends Part {
             parent_list.push(this.target.part);
         }
 
+        if (this.origin !== undefined) {
+            parent_list.push(this.origin.part);
+        }
+
         return parent_list; 
     }
 
@@ -64,8 +71,8 @@ export default class Trace extends Part {
             points: points
         }, scene);
         
-        if (this.target !== undefined) {
-            polyline.parent = this.target.node;
+        if (this.origin !== undefined) {
+            polyline.parent = this.origin.node;
         }
 
         this.polyline_primitive = polyline;
