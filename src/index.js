@@ -10,6 +10,7 @@ import Oscillator from './parts/Oscillator';
 import RotatingSphere from './parts/RotatingSphere';
 import Fourier from './waves/Fourier';
 import Square from './waves/Square';
+import Sine from './waves/Sine';
 
 const fourier = new Fourier({
     amplitudes: [1, 1/2, 1/4, 1/8],
@@ -18,13 +19,28 @@ const fourier = new Fourier({
 const fourier2 = new Fourier({
     amplitudes: [1, 2, 4, 8],
     frequencies: [1, 2, 3, 4]
-})
+});
+const fourier3 = new Fourier({
+    amplitudes: [1, 1/3, 1/5, 1/7],
+    frequencies: [1, 3, 5, 7]
+});
 const fourier_osc = new PartViewer({
     part_class: XYZOscillator,
     part_parameters: {
         waves: [fourier, new Square(), fourier2],
         amplitudes: new Vector3(3, 1, 2),
         frequencies: new Vector3(1, 100, 1),
+    },
+    trace_joint: 'translate_wave',
+    time_step: 1/1000
+});
+
+const fourier_ring = new PartViewer({
+    part_class: XYZOscillator,
+    part_parameters: {
+        waves: [new Sine(), fourier3, new Sine()],
+        amplitudes: new Vector3(1, 1, 1),
+        frequencies: new Vector3(1, 4, 1),
     },
     trace_joint: 'translate_wave',
     time_step: 1/1000
@@ -45,6 +61,7 @@ const gear_train = new GearTrain();
 
 const renderer = new Renderer();
 renderer.add_machines([
+    fourier_ring,
     fourier_osc,
     sphere_spirals,
     osc3,
