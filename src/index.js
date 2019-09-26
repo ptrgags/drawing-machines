@@ -5,6 +5,7 @@ import GearTrain from './machines/GearTrain';
 import AverageBox from './machines/AverageBox';
 import PartViewer from './machines/PartViewer';
 import DoubleAverageBox from './machines/DoubleAverageBox';
+import ThrobbingSphere from './machines/ThrobbingSphere';
 import XYZOscillator from './parts/XYZOscillator';
 import Oscillator from './parts/Oscillator';
 import RotatingSphere from './parts/RotatingSphere';
@@ -34,7 +35,6 @@ const fourier_osc = new PartViewer({
     trace_joint: 'translate_wave',
     time_step: 1/1000
 });
-
 const fourier_ring = new PartViewer({
     part_class: XYZOscillator,
     part_parameters: {
@@ -45,7 +45,6 @@ const fourier_ring = new PartViewer({
     trace_joint: 'translate_wave',
     time_step: 1/1000
 });
-
 const osc3 = new PartViewer({
     part_class: XYZOscillator,
     trace_joint: 'translate_wave',
@@ -58,9 +57,11 @@ const sphere_spirals = new PartViewer({
 const avg_box = new AverageBox();
 const double_avg_box = new DoubleAverageBox();
 const gear_train = new GearTrain();
+const throb = new ThrobbingSphere();
 
 const renderer = new Renderer();
 renderer.add_machines([
+    throb,
     fourier_ring,
     fourier_osc,
     sphere_spirals,
