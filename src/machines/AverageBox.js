@@ -162,7 +162,6 @@ export default class AverageBox extends Machine {
         });
         const trace = new Trace({ 
             source: centroid.to_joint('translate'),
-            origin: origin.to_joint('translate'),
             num_points: parameters.trace_length
         });
 

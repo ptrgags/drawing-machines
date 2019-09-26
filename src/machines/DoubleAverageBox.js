@@ -47,8 +47,7 @@ export default class DoubleAverageBox extends Machine {
             machine_class: AverageBox,
             machine_parameters: parameters.box_parameters,
             parent: right.to_joint('translate'),
-        });
-        
+        });        
         const centroid = new Centroid({
             points: [
                 left_box.to_joint('centroid.translate'),
