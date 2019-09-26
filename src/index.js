@@ -21,10 +21,10 @@ const gear_train = new GearTrain();
 
 const renderer = new Renderer();
 renderer.add_machines([
-    gear_train,
     sphere_spirals,
+    osc3,
+    gear_train,
     double_avg_box,
     avg_box,
-    osc3,
 ]);
 renderer.start();
