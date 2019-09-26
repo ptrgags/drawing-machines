@@ -7,8 +7,19 @@ import "@babylonjs/core/Meshes/meshBuilder";
 import Part from './Part';
 
 export default class Wheel extends Part {
-    constructor(parameters) {
-        super(parameters);
+    get default_parameters() {
+        return {
+            radius: 1,
+            half_height: 0.1,
+            offset: Vector3.Zero(),
+            initial_angle: 0,
+            angular_velocity: 1,
+            parent: undefined
+        }
+    }
+
+    init(parameters) {
+        super.init(parameters);
 
         //Parameters
         this.radius = parameters.radius;
@@ -16,16 +27,17 @@ export default class Wheel extends Part {
         this.offset = parameters.offset;
         this.initial_angle = parameters.initial_angle;
         this.angular_velocity = parameters.angular_velocity;
-        this.parent = parameters.parent;
 
         // Variables
         this.angle = 0; 
+    }
 
-        // BabylonJS objects
-        this.translate = undefined;
-        this.rotate = undefined;
-        this.scale = undefined;
-        this.wheel_primitive = undefined;
+    get transform_names() {
+        return ['translate', 'rotate', 'scale'];
+    }
+
+    get primitive_names() {
+        return ['wheel_primitive'];
     }
 
     get part_type() {

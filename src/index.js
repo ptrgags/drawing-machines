@@ -17,14 +17,14 @@ const sphere_spirals = new PartViewer({
 });
 const avg_box = new AverageBox();
 const double_avg_box = new DoubleAverageBox();
-//const gear_train = new GearTrain();
+const gear_train = new GearTrain();
 
 const renderer = new Renderer();
 renderer.add_machines([
+    gear_train,
     sphere_spirals,
     double_avg_box,
     avg_box,
     osc3,
-    //gear_train
 ]);
 renderer.start();

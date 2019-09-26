@@ -7,8 +7,15 @@ import "@babylonjs/core/Meshes/meshBuilder";
 import Wheel from './Wheel';
 
 export default class DrivenWheel extends Wheel {
-    constructor(parameters) {
-        super(parameters);
+    get default_parameters() {
+        const wheel_params  = super.default_parameters;
+        return {
+            offset_angle: 0
+        };
+    }
+
+    init(parameters) {
+        super.init(parameters);
 
         // The angular velocity depends on the previous wheel in the chain
         const parent_part = this.parent.part;

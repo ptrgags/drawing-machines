@@ -114,8 +114,8 @@ export default class GearTrain extends Machine {
 
         const trace = new Trace({
             source: pen.to_joint('translate'),
-            reference_frame: gears[1].to_joint('rotate'),
-            parent: gears[1].to_joint('rotate'),
+            target: gears[1].to_joint('rotate'),
+            origin: gears[1].to_joint('rotate'),
             num_points: parameters.trace_length
         });
 

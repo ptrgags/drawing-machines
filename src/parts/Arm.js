@@ -4,16 +4,21 @@ import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 import "@babylonjs/core/Meshes/meshBuilder";
 
 import Part from './Part';
+import { required } from '../util.js';
 
 export default class Arm extends Part {
-    constructor(parameters) {
-        super(parameters);
+    get default_parameters() {
+        return {
+            parents: undefined,
+        }
+    }
 
-        [this.start_parent, this.end_parent] = parameters.parents;
+    init(parameters) {
+        [this.start_parent, this.end_parent] = required(parameters, 'parents');
+    }
 
-        //Babylon primitives
-        this.rotate = undefined;
-        this.scale = undefined;
+    get transform_names() {
+        return ['rotate', 'scale'];
     }
 
     get parents() {
