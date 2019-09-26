@@ -7,24 +7,35 @@ import "@babylonjs/core/Meshes/meshBuilder";
 import Part from './Part';
 
 export default class Oscillator extends Part {
-    constructor(parameters) {
-        super(parameters);
+    get default_parameters() {
+        return {
+            parent: undefined,
+            offset: Vector3.Zero(),
+            amplitude: 1,
+            phase: 0,
+            direction: new Vector3(0, 1, 0),
+            frequency: 1,
+            radius: 0.1
+        }
+    }
+    init(parameters) {
+        super.init(parameters);
 
         // extract the parameters
-        this.parent = parameters.parent;
         this.offset = parameters.offset;
         this.amplitude = parameters.amplitude;
         this.phase = parameters.phase;
         this.direction = parameters.direction;
         this.frequency = parameters.frequency;
         this.radius = parameters.radius;
+    }
 
-        // BabylonJS objects
-        this.translate = undefined;
-        this.translate_wave = undefined;
-        this.scale = undefined;
-        this.line_primitive = undefined;
-        this.sphere_primitive = undefined;
+    get transform_names() {
+        return ['translate', 'translate_wave', 'scale'];
+    }
+
+    get primitive_names() {
+        return ['line_primitive', 'sphere_primitive'];
     }
 
     get part_type() {
