@@ -1,26 +1,39 @@
-import { Vector3 } from "@babylonjs/core/Maths/math";
+import { Vector3, Color4 } from "@babylonjs/core/Maths/math";
 import { TransformNode } from "@babylonjs/core/Meshes/transformNode";
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 import "@babylonjs/core/Meshes/meshBuilder";
 
 import Part from './Part';
+import { required } from '../util';
 
 export default class Trace extends Part {
-    constructor(parameters) {
-        super(parameters);
+    get default_parameters() {
+        return {
+            // The joint to trace (the pen) (required)
+            source: undefined,
+            // The reference frame to draw on (the 3D paper) (optional)
+            target: undefined,
+            // The reference frame to use as the origin
+            origin: undefined,
+            // Number of points in the polyline
+            num_points: 1000,
+            // Color of the trace (default orange)
+            color: new Color4(1, 0.5, 0, 1),
+        };
+    }
 
-        // The joint to trace (the pen) (required)
-        this.source = parameters.source;
-        // The reference frame to draw on (the 3D paper) (optional)
-        this.reference_frame = parameters.reference_frame;
-        // The transform to apply to the reference frame (rotating the paper) 
-        // (optional)
-        this.parent = parameters.parent;
-        // The number of points in the trail. (required)
-        this.num_points = parameters.num_points;
+    init(parameters) {
+        this.source = required(parameters, 'source');
+        this.target = parameters.target;
+        this.origin = parameters.origin;
+
         this.points = [];
+        this.num_points = parameters.num_points;
+        this.color = parameters.color;
+    }
 
-        this.polyline_primitive = undefined;
+    get primitive_names() {
+        return ['polyline_primitive'];
     }
 
     init_points() {
@@ -39,12 +52,12 @@ export default class Trace extends Part {
     get parents() {
         const parent_list = [this.source.part];
 
-        if (this.reference_frame !== undefined) {
-            parent_list.push(this.reference_frame.part);
+        if (this.target !== undefined) {
+            parent_list.push(this.target.part);
         }
 
-        if (this.parent !== undefined) {
-            parent_list.push(this.parent.part);
+        if (this.origin !== undefined) {
+            parent_list.push(this.origin.part);
         }
 
         return parent_list; 
@@ -53,14 +66,14 @@ export default class Trace extends Part {
     build(scene) {
         const points = this.init_points();
         const polyline = MeshBuilder.CreateLines(`${this.id}-polyline`, {
+            colors: Array(points.length).fill(this.color),
             updatable: true,
             points: points
         }, scene);
         
-        if (this.parent !== undefined) {
-            polyline.parent = this.parent.node;
+        if (this.origin !== undefined) {
+            polyline.parent = this.origin.node;
         }
-
 
         this.polyline_primitive = polyline;
         this.points = points;
@@ -72,8 +85,8 @@ export default class Trace extends Part {
 
         // Transform things into the "paper" coordinate frame. For a turntable
         // drawing machine, this could be a rotating reference frame.
-        if (this.reference_frame !== undefined) {
-            const M_paper = this.reference_frame.inverse_matrix; 
+        if (this.target !== undefined) {
+            const M_paper = this.target.inverse_matrix; 
             position = Vector3.TransformCoordinates(position, M_paper); 
         }
 

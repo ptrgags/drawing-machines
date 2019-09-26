@@ -7,6 +7,8 @@ export default class Machine {
         this.vertices = [];
         // Map of parent id -> [child id]
         this.edges = new Map();
+        // Optional map of label -> id
+        this.labels = new Map();
 
         // True if vertices are in topologically sorted order.
         this.is_sorted = true;
@@ -14,10 +16,16 @@ export default class Machine {
         // Initialize the machine based on parameters
         this.init({...this.default_parameters, ...parameters});
     }
+
+    get machine_type() {
+        return 'machine';
+    }
     
     // Return some default parameters to set an example to the user 
     get default_parameters() {
-        return {};
+        return {
+            parent: undefined,
+        };
     }
 
     get time_step() {
@@ -32,11 +40,12 @@ export default class Machine {
         this.edges.get(parent_id).push(child_id);
     }
 
-    add_part(part) {
+    add_part(part, label) {
         // Add the part to a lookup table and add a vertex to the DAG
         const id = part.id;
         this.vertices.push(id);
         this.part_table.set(id, part);
+        this.labels.set(label, id);
 
         // Mark the topological sorting as invalid
         this.is_sorted = false;
@@ -52,6 +61,15 @@ export default class Machine {
         for (let part of parts) {
             this.add_part(part);
         }
+    }
+
+    get_part(part_id) {
+        return this.part_table.get(part_id);
+    }
+    
+    find_part(label) {
+        const part_id = this.labels.get(label);
+        return this.get_part(part_id);
     }
 
     postorder(vertex, visited, results) {
@@ -117,7 +135,7 @@ export default class Machine {
     }
     
     init(parameters) {
-        // Subclasses will initialize the primitives here
+        // Subclasses will initialize the parts
     }
 
     build(scene) {

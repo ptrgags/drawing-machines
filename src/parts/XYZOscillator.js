@@ -7,21 +7,32 @@ import "@babylonjs/core/Meshes/meshBuilder";
 import Part from './Part';
 
 export default class XYZOscillator extends Part {
-    constructor(parameters) {
-        super(parameters);
+    get default_parameters() {
+        return {
+            parent: undefined,
+            amplitudes: new Vector3(1, 1, 1),
+            frequencies: new Vector3(1, 0.1, 1),
+            phases: new Vector3(0, 0, Math.PI / 2),
+        }
+    }
 
-        this.parent = parameters.parent;
+    init(parameters) {
+        super.init(parameters);
         this.frequencies = parameters.frequencies;
         this.phases = parameters.phases;
         this.amplitudes = parameters.amplitudes;
+    }
 
-        this.translate = undefined;
-        this.translate_wave = undefined;
-        this.sphere_primitive = undefined;
+    get transform_names() {
+        return ['translate', 'translate_wave'];
+    }
+
+    get primitive_names() {
+        return ['sphere_primitive'];
     }
 
     get part_type() {
-        return 'xyz-osc';
+        return 'xyzosc';
     }
 
     get parents() {

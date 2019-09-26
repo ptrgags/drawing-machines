@@ -6,29 +6,30 @@ import "@babylonjs/core/Meshes/meshBuilder";
 import Part from './Part';
 
 export default class Point extends Part {
-    constructor(parameters) {
-        super(parameters);
+    get default_parameters() {
+        return {
+            offset: Vector3.Zero(),
+            parent: undefined,
+            show_offset: false
+        };
+    }
 
-        // Load parameters
+    init(parameters) {
+        super.init(parameters);
         this.offset = parameters.offset;
-        this.parent = parameters.parent;
         this.show_offset = parameters.show_offset;
-
-        // Reserve slots for Babylon primitives
-        this.translate = undefined;
-        this.line = undefined;
     }
 
     get part_type() {
         return 'point';
     }
 
-    get parents() {
-        if (this.parent !== undefined) {
-            return [this.parent.part];
-        }
+    get transform_names() {
+        return ['translate'];
+    }
 
-        return [];
+    get primitive_names() {
+        return ['line'];
     }
 
     make_line(scene) {

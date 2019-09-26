@@ -7,18 +7,39 @@ import "@babylonjs/core/Meshes/meshBuilder";
 import Part from './Part';
 
 export default class RotatingSphere extends Part {
-    constructor(parameters) {
-        super(parameters);
+    get default_parameters() {
+        return {
+            parent: undefined,
+            radius: 2,
+            axes: [
+                new Vector3(0, 1, 0),
+                new Vector3(0, 0, 1)
+            ],
+            angular_frequencies: [
+                0.1,
+                2,
+            ],
+            phases: [
+                0,
+                0
+            ],
+        }
+    }
 
-        this.parent = parameters.parent;
+    init(parameters) {
+        super.init(parameters);
         this.radius = parameters.radius;
         this.angular_frequencies = parameters.angular_frequencies;
         this.axes = parameters.axes;
         this.phases = parameters.phases;
+    }
 
-        this.rotation = undefined;
-        this.translate = undefined;
-        this.sphere_primitive = undefined;
+    get transform_names() {
+        return ['rotation', 'translate'];
+    }
+
+    get primitive_names() {
+        return ['sphere_primitive'];
     }
 
     get parents() {

@@ -7,6 +7,12 @@ import "@babylonjs/core/Meshes/meshBuilder";
 import Part from './Part';
 
 export default class Centroid extends Part {
+    get default_parameters() {
+        return {
+            points: [],
+        }
+    }
+
     constructor(parameters) {
         super(parameters);
 
@@ -28,8 +34,17 @@ export default class Centroid extends Part {
         return parent_points;
     }
 
+    /**
+     * Compute the point relative to the origin's coordinate system
+     */
+    static compute_point(joint, inv_origin_matrix) {
+        const pos_world = joint.position;
+        return Vector3.TransformCoordinates(pos_world, inv_origin_matrix);
+    }
+
     get centroid() {
-        const points = this.points.map(x => x.position);
+        const M = this.origin.inverse_matrix; 
+        const points = this.points.map(x => Centroid.compute_point(x, M));
         const weights = this.weights;
         const sum = Vector3.Zero(); 
         let weight_sum = 0;
