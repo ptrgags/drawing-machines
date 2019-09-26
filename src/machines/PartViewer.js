@@ -37,8 +37,8 @@ export default class PartViewer extends Machine {
 
         const PartClass = required(parameters, 'part_class');
         const part = new PartClass({
-            parent: origin.to_joint('translate'), 
-            ...parameters.part_parameters
+            ...parameters.part_parameters,
+            parent: origin.to_joint('translate')
         });
 
         const trace = new Trace({ 

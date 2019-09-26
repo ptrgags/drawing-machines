@@ -5,6 +5,7 @@ import { GridMaterial } from "@babylonjs/materials/grid";
 import "@babylonjs/core/Meshes/meshBuilder";
 
 import Part from './Part';
+import Sine from '../waves/Sine';
 
 export default class Oscillator extends Part {
     get default_parameters() {
@@ -15,7 +16,8 @@ export default class Oscillator extends Part {
             phase: 0,
             direction: new Vector3(0, 1, 0),
             frequency: 1,
-            radius: 0.1
+            radius: 0.1,
+            wave: new Sine(),
         }
     }
     init(parameters) {
@@ -28,6 +30,7 @@ export default class Oscillator extends Part {
         this.direction = parameters.direction;
         this.frequency = parameters.frequency;
         this.radius = parameters.radius;
+        this.wave = parameters.wave;
     }
 
     get transform_names() {
@@ -74,7 +77,7 @@ export default class Oscillator extends Part {
     }
 
     update(t) { 
-        const wave = this.amplitude * Math.sin(
+        const wave = this.amplitude * this.wave.compute(
             2.0 * Math.PI * this.frequency * t + this.phase);
         const wave_offset = this.direction.scale(wave);
         this.translate_wave.position = wave_offset;

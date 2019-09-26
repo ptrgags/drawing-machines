@@ -5,6 +5,7 @@ import { GridMaterial } from "@babylonjs/materials/grid";
 import "@babylonjs/core/Meshes/meshBuilder";
 
 import Part from './Part';
+import Sine from '../waves/Sine';
 
 export default class XYZOscillator extends Part {
     get default_parameters() {
@@ -13,6 +14,7 @@ export default class XYZOscillator extends Part {
             amplitudes: new Vector3(1, 1, 1),
             frequencies: new Vector3(1, 0.1, 1),
             phases: new Vector3(0, 0, Math.PI / 2),
+            waves: [new Sine(), new Sine(), new Sine()]
         }
     }
 
@@ -21,6 +23,7 @@ export default class XYZOscillator extends Part {
         this.frequencies = parameters.frequencies;
         this.phases = parameters.phases;
         this.amplitudes = parameters.amplitudes;
+        this.waves = parameters.waves;
     }
 
     get transform_names() {
@@ -64,10 +67,11 @@ export default class XYZOscillator extends Part {
         const theta_x = 2.0 * Math.PI * this.frequencies.x * t + this.phases.x;
         const theta_y = 2.0 * Math.PI * this.frequencies.y * t + this.phases.y;
         const theta_z = 2.0 * Math.PI * this.frequencies.z * t + this.phases.z;
-        const wave_x = this.amplitudes.x * Math.sin(theta_x);
-        const wave_y = this.amplitudes.y * Math.sin(theta_y);
-        const wave_z = this.amplitudes.z * Math.sin(theta_z);
-        return new Vector3(wave_x, wave_y, wave_z);
+        const [wave_x, wave_y, wave_z] = this.waves;
+        const val_x = this.amplitudes.x * wave_x.compute(theta_x);
+        const val_y = this.amplitudes.y * wave_y.compute(theta_y);
+        const val_z = this.amplitudes.z * wave_z.compute(theta_z);
+        return new Vector3(val_x, val_y, val_z);
     }
 
     update(t) {
