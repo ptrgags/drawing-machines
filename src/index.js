@@ -85,7 +85,7 @@ const fourier_discs = new FourierSeries3D();
 const fourier_spheres = new FourierSeries3D({
     axes: [
         new Vector3(0, 1, 0),
-        new Vector3(0, 0, 1).normalize(),
+        new Vector3(0, 0, 1),
         new Vector3(0, 1, 0),
         new Vector3(0, 0, 1),
     ],
@@ -94,8 +94,21 @@ const fourier_spheres = new FourierSeries3D({
     time_step: 1/1000,
 });
 
+const torus_knot = new FourierSeries3D({
+    axes: [
+        new Vector3(0, 1, 0),
+        new Vector3(0, 0, 1)
+    ],
+    amplitudes: [2, 0.5],
+    angular_frequencies: [1, 100],
+    phases: [0, 0],
+    time_step: 1/400,
+    trace_length: 10000,
+});
+
 const renderer = new Renderer();
 renderer.add_machines([
+    torus_knot,
     fourier_spheres,
     fourier_discs,
     box_vs_spirals,
