@@ -3,6 +3,7 @@ import { Scene } from '@babylonjs/core/scene';
 import { Vector3 } from '@babylonjs/core/Maths/math';
 import { ArcRotateCamera } from '@babylonjs/core/Cameras/arcRotateCamera';
 import { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
+import { AdvancedDynamicTexture, Button, Control} from '@babylonjs/gui/2D';
 
 export default class Renderer {
     constructor() {
@@ -22,7 +23,39 @@ export default class Renderer {
         this.active_machine = 0;
         this.t = 0;
 
+        this.gui = this.init_gui();
+
         this.machine_primitive = undefined;
+    }
+
+    switch_machine(direction) {
+        // JavaScript's modulo operator doesn't handle negatives correctly :(
+        this.active_machine += direction;
+        this.active_machine %= this.machines.length;
+        this.active_machine += this.machines.length;
+        this.active_machine %= this.machines.length;
+        this.t = 0;
+        this.build();
+    }
+
+    init_gui() {
+        const gui = AdvancedDynamicTexture.CreateFullscreenUI("UI");
+        const prev = Button.CreateSimpleButton('prev', "< Previous");
+        prev.width = "150px";
+        prev.color = "white";
+        prev.thickness = 0;
+        prev.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+        prev.onPointerUpObservable.add(() => this.switch_machine(-1));
+        gui.addControl(prev);
+
+        const next = Button.CreateSimpleButton('next', "Next >");
+        next.width = "150px";
+        next.color = "white";
+        next.thickness = 0;
+        next.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        next.onPointerUpObservable.add(() => this.switch_machine(1));
+        gui.addControl(next);
+        return gui;
     }
 
     add_machines(new_machines) {

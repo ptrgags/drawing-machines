@@ -25,7 +25,7 @@ export default class Trace extends Part {
     init(parameters) {
         this.source = required(parameters, 'source');
         this.target = parameters.target;
-        this.origin = parameters.origin;
+        this.origin = required(parameters, 'origin');
 
         this.points = [];
         this.num_points = parameters.num_points;
@@ -38,7 +38,7 @@ export default class Trace extends Part {
 
     init_points() {
         const points = [];
-        const initial_pos = this.source.position;
+        const initial_pos = this.compute_point();
         for (let i = 0; i < this.num_points; i++) {
             points.push(initial_pos);
         }
@@ -50,14 +50,10 @@ export default class Trace extends Part {
     }
 
     get parents() {
-        const parent_list = [this.source.part];
+        const parent_list = [this.source.part, this.origin.part];
 
         if (this.target !== undefined) {
             parent_list.push(this.target.part);
-        }
-
-        if (this.origin !== undefined) {
-            parent_list.push(this.origin.part);
         }
 
         return parent_list; 
@@ -71,9 +67,7 @@ export default class Trace extends Part {
             points: points
         }, scene);
         
-        if (this.origin !== undefined) {
-            polyline.parent = this.origin.node;
-        }
+        polyline.parent = this.origin.node;
 
         this.polyline_primitive = polyline;
         this.points = points;
@@ -99,10 +93,9 @@ export default class Trace extends Part {
         points.push(point);
         points.shift();
 
-        this.polyline_primitive = MeshBuilder.CreateLines(null, {
-            updatable: true,
+        this.polyline_primitive = MeshBuilder.CreateLines(`${this.id}-polyline`, {
             instance: this.polyline_primitive,
             points: points
-        }, null);
+        });
     }
 }

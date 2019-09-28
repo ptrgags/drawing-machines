@@ -30,6 +30,7 @@ export default class ThrobbingSphere extends Machine {
         });
         const trace = new Trace({ 
             source: sphere.to_joint('translate'),
+            origin: origin.to_joint('translate'),
             num_points: parameters.trace_length
         });
 

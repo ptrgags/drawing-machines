@@ -62,6 +62,7 @@ export default class CentroidViewer extends Machine {
         const centroid = this.make_centroid(parameters, parts, origin);
         const trace = new Trace({ 
             source: centroid.to_joint('translate'),
+            origin: origin.to_joint('translate'),
             num_points: parameters.trace_length
         });
 
