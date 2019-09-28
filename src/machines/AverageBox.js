@@ -13,6 +13,7 @@ import Trace from '../parts/Trace';
 export default class AverageBox extends Machine {
     get default_parameters() {
         return { 
+            parent: undefined,
             // Dimensions of the scale of the box in each dimension. These
             // will also be the amplitudes of the oscillation
             size: new Vector3(3, 3, 3),

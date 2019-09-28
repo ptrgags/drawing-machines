@@ -41,6 +41,10 @@ export default class Part {
         };
     }
 
+    change_parent(parent) {
+        this.parent = parent;
+    }
+
     init(parameters) {
         // Most often there is a single parent
         this.parent = parameters.parent;

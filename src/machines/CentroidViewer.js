@@ -17,7 +17,7 @@ export default class CentroidViewer extends Machine {
             joint_names: [],
             offsets: [],
             weights: [],
-            centroid_trace_length: 1000
+            trace_length: 1000,
         };
     }
 
@@ -37,7 +37,7 @@ export default class CentroidViewer extends Machine {
         const parts = [];
         for (let i = 0; i < parameters.parts.length; i++) {
             const part = parameters.parts[i];
-            part.parent = offsets[i].to_joint('translate');
+            part.change_parent(offsets[i].to_joint('translate'));
             parts.push(part);
         }
         return parts;

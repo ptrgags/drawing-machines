@@ -23,6 +23,11 @@ export default class Prefab extends Part {
         this.machine.root_part.parent = parameters.parent;
     }
 
+    change_parent(parent) {
+        this.parent = parent;
+        this.machine.root_part.parent = parent;
+    }
+
     get part_type() {
         return `prefab-${this.machine.machine_type}`;
     }

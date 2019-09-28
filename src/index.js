@@ -57,34 +57,24 @@ const sphere_spirals = new PartViewer({
 const avg_box = new AverageBox();
 
 
-const quad_avg_box = new CentroidViewer({
+const box_vs_spirals = new CentroidViewer({
     parts: [
-        new Prefab({
-            machine: new AverageBox()
-        }),
-        new Prefab({
-            machine: new AverageBox()
-        }),
-        new Prefab({
-            machine: new AverageBox()
-        }),
+        // TODO: Wrap with a trace
+        new RotatingSphere(),
         new Prefab({
             machine: new AverageBox()
         }),
     ],
     joint_names: [
-        'centroid.translate',
-        'centroid.translate',
-        'centroid.translate',
+        'translate',
         'centroid.translate',
     ],
     offsets: [
-        new Vector3(2, 0, 0),
-        new Vector3(-2, 0, 0),
-        new Vector3(0, 0, 2),
-        new Vector3(0, 0, 2),
+        new Vector3(10, 0, 0),
+        new Vector3(-10, 0, 0),
     ],
-    weights: [1, 1, 1, 1]
+    weights: [1, 1],
+    trace_length: 10000
 });
 
 const gear_train = new GearTrain();
@@ -92,7 +82,7 @@ const throb = new ThrobbingSphere();
 
 const renderer = new Renderer();
 renderer.add_machines([
-    quad_avg_box,
+    box_vs_spirals,
     fourier_osc,
     throb,
     fourier_ring,
