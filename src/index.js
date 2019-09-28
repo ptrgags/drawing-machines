@@ -5,6 +5,7 @@ import PartViewer from './machines/PartViewer';
 import AverageBox from './machines/AverageBox';
 import DoubleAverageBox from './machines/DoubleAverageBox';
 import GearTrain from './machines/GearTrain';
+import FourierSeries3D from './machines/FourierSeries3D';
 import ThrobbingSphere from './machines/ThrobbingSphere';
 import CentroidViewer from './machines/CentroidViewer';
 import XYZOscillator from './parts/XYZOscillator';
@@ -80,8 +81,11 @@ const box_vs_spirals = new CentroidViewer({
 const gear_train = new GearTrain();
 const throb = new ThrobbingSphere();
 
+const fourier_discs = new FourierSeries3D();
+
 const renderer = new Renderer();
 renderer.add_machines([
+    fourier_discs,
     box_vs_spirals,
     fourier_osc,
     throb,

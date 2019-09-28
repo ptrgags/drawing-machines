@@ -39,7 +39,7 @@ export default class RotatingSphere extends Part {
     }
 
     get primitive_names() {
-        return ['sphere_primitive'];
+        return ['sphere_primitive', 'radius_primitive'];
     }
 
     get parents() {
@@ -63,6 +63,15 @@ export default class RotatingSphere extends Part {
         sphere.material = new GridMaterial(`${this.id}-mat-grid`, scene);
         sphere.parent = translate;
         this.sphere_primitive = sphere;
+
+        const line = MeshBuilder.CreateLines(`${this.id}-line`, {
+            points: [
+                Vector3.Zero(),
+                translate.position.negate()
+            ]
+        }, scene);
+        line.parent = translate;
+        this.line_primitive = line;
     }
 
     compute_angles(t) {
