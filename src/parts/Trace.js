@@ -77,11 +77,16 @@ export default class Trace extends Part {
         // Compute the position of the pen in world space
         let position = this.source.position;
 
-        // Transform things into the "paper" coordinate frame. For a turntable
-        // drawing machine, this could be a rotating reference frame.
         if (this.target !== undefined) {
+            // Transform things into the "paper" coordinate frame. For a turntable
+            // drawing machine, this could be a rotating reference frame.
             const M_paper = this.target.inverse_matrix; 
             position = Vector3.TransformCoordinates(position, M_paper); 
+        } else {
+            // Transform into the origin's coordinate frame. If a target is
+            // specified, this doesn't need to be done
+            const M_origin = this.origin.inverse_matrix;
+            position = Vector3.TransformCoordinates(position, M_origin);
         }
 
         return position;
