@@ -12,10 +12,8 @@ export default class PartViewer extends Machine {
             origin_offset: Vector3.Zero(),
             // How many points to store in the trace
             trace_length: 1000,
-            // Part subclass to construct (required)
-            part_class: undefined,
-            // Parameters to pass to the part
-            part_parameters: {},
+            // Part object to store (required)
+            part: undefined,
             // What joint of the part to connect the trace to
             trace_joint: 'translate',
             // Time step
@@ -35,12 +33,9 @@ export default class PartViewer extends Machine {
             show_offset: false
         });
 
-        const PartClass = required(parameters, 'part_class');
-        const part = new PartClass({
-            ...parameters.part_parameters,
-            parent: origin.to_joint('translate')
-        });
-
+        const part = required(parameters, 'part');
+        part.parent = origin.to_joint('translate');
+        
         const trace = new Trace({ 
             source: part.to_joint(parameters.trace_joint),
             num_points: parameters.trace_length
