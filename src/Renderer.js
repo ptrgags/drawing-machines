@@ -14,6 +14,8 @@ export default class Renderer {
         this.camera = new ArcRotateCamera(
             'camera', 0, Math.PI / 3, 10, Vector3.Zero(), this.scene);
         this.camera.attachControl(this.canvas, true); 
+        this.camera.lowerRadiusLimit = 0.1;
+        this.camera.wheelDeltaPercentage = 0.01;
 
         this.light = new HemisphericLight(
             'light', new Vector3(0, 1, 0), this.scene);
