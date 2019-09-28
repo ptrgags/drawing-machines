@@ -14,7 +14,7 @@ export default class Machine {
         this.is_sorted = true;
 
         // Initialize the machine based on parameters
-        this.init({...this.default_parameters, ...parameters});
+        this.root_part = this.init({...this.default_parameters, ...parameters});
     }
 
     get machine_type() {
@@ -136,6 +136,7 @@ export default class Machine {
     
     init(parameters) {
         // Subclasses will initialize the parts
+        return undefined;
     }
 
     build(scene) {

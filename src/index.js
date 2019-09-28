@@ -6,9 +6,10 @@ import AverageBox from './machines/AverageBox';
 import DoubleAverageBox from './machines/DoubleAverageBox';
 import GearTrain from './machines/GearTrain';
 import ThrobbingSphere from './machines/ThrobbingSphere';
-//import CentroidViewer from './machines/CentroidViewer';
+import CentroidViewer from './machines/CentroidViewer';
 import XYZOscillator from './parts/XYZOscillator';
 import RotatingSphere from './parts/RotatingSphere';
+import Prefab from './parts/Prefab';
 import Fourier from './waves/Fourier';
 import Sine from './waves/Sine';
 import Square from './waves/Square';
@@ -54,19 +55,50 @@ const sphere_spirals = new PartViewer({
     trace_length: 4000
 });
 const avg_box = new AverageBox();
-const double_avg_box = new DoubleAverageBox();
+
+
+const quad_avg_box = new CentroidViewer({
+    parts: [
+        new Prefab({
+            machine: new AverageBox()
+        }),
+        new Prefab({
+            machine: new AverageBox()
+        }),
+        new Prefab({
+            machine: new AverageBox()
+        }),
+        new Prefab({
+            machine: new AverageBox()
+        }),
+    ],
+    joint_names: [
+        'centroid.translate',
+        'centroid.translate',
+        'centroid.translate',
+        'centroid.translate',
+    ],
+    offsets: [
+        new Vector3(2, 0, 0),
+        new Vector3(-2, 0, 0),
+        new Vector3(0, 0, 2),
+        new Vector3(0, 0, 2),
+    ],
+    weights: [1, 1, 1, 1]
+});
+
 const gear_train = new GearTrain();
 const throb = new ThrobbingSphere();
 
 const renderer = new Renderer();
 renderer.add_machines([
+    quad_avg_box,
     fourier_osc,
     throb,
     fourier_ring,
     sphere_spirals,
     osc3,
     gear_train,
-    double_avg_box,
     avg_box,
 ]);
 renderer.start();

@@ -2,16 +2,21 @@ import { Vector3 } from '@babylonjs/core/Maths/math';
 
 import Machine from './Machine';
 import Point from '../parts/Point';
+import Centroid from '../parts/Centroid';
 import Trace from '../parts/Trace';
 import { required } from '../util';
 
+/**
+ * A CentroidViewer is like a PartViewer, except it allows for multiple
+ * parts and adds a centroid to combine the results
+ */
 export default class CentroidViewer extends Machine {
     get default_parameters() {
         return {
-            machine_classes: [],
-            machine_parameters: [],
+            parts: [],
             joint_names: [],
             offsets: [],
+            weights: [],
             centroid_trace_length: 1000
         };
     }
@@ -28,22 +33,19 @@ export default class CentroidViewer extends Machine {
         return points;
     }
 
-    make_prefabs(parameters, offsets) {
-        const prefabs = [];
-        for (let i = 0; i < parameters.machine_classes; i++) {
-            const prefab = new Prefab({
-                machine_class: parameters.machine_classes[i],
-                machine_parameters: parameters.machine_parameters[i],
-                parent: offsets[i].to_joint('translate'),
-            });
-            prefabs.push(prefab);
+    make_parts(parameters, offsets) {
+        const parts = [];
+        for (let i = 0; i < parameters.parts.length; i++) {
+            const part = parameters.parts[i];
+            part.parent = offsets[i].to_joint('translate');
+            parts.push(part);
         }
-        return prefabs;
+        return parts;
     }
 
-    make_centroid(parameters, prefabs, origin) {
+    make_centroid(parameters, parts, origin) {
         const names = parameters.joint_names;
-        const joints = prefabs.map((prefab, i) => prefab.to_joint(names[i]));
+        const joints = parts.map((part, i) => part.to_joint(names[i]));
         return new Centroid({
             points: joints,
             weights: parameters.weights,
@@ -56,8 +58,8 @@ export default class CentroidViewer extends Machine {
             show_offset: true
         });
         const offsets = this.make_offsets(parameters, origin);
-        const prefabs = this.make_prefabs(parameters, offsets);
-        const centroid = this.make_centroid(parameters, prefabs, origin);
+        const parts = this.make_parts(parameters, offsets);
+        const centroid = this.make_centroid(parameters, parts, origin);
         const trace = new Trace({ 
             source: centroid.to_joint('translate'),
             num_points: parameters.trace_length
@@ -65,7 +67,7 @@ export default class CentroidViewer extends Machine {
 
         this.add_part(origin);
         this.add_parts(offsets);
-        this.add_parts(prefabs);
+        this.add_parts(parts);
         this.add_part(centroid);
         this.add_part(trace);
 
