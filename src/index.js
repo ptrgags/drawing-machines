@@ -82,9 +82,21 @@ const gear_train = new GearTrain();
 const throb = new ThrobbingSphere();
 
 const fourier_discs = new FourierSeries3D();
+const fourier_spheres = new FourierSeries3D({
+    axes: [
+        new Vector3(0, 1, 0),
+        new Vector3(0, 0, 1).normalize(),
+        new Vector3(0, 1, 0),
+        new Vector3(0, 0, 1),
+    ],
+    angular_frequencies: [13, 19, 23, 43],
+    trace_length: 10000,
+    time_step: 1/1000,
+});
 
 const renderer = new Renderer();
 renderer.add_machines([
+    fourier_spheres,
     fourier_discs,
     box_vs_spirals,
     fourier_osc,

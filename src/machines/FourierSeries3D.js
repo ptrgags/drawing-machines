@@ -18,8 +18,13 @@ export default class FourierSeries3D extends Machine {
                 new Vector3(0, 1, 0),
                 new Vector3(0, 1, 0),
             ],
-            trace_length: 10000
+            trace_length: 1000,
+            time_step: 1/100
         }
+    }
+
+    get time_step() {
+        return this._time_step;
     }
 
     make_spheres(parameters, origin) {
@@ -40,6 +45,7 @@ export default class FourierSeries3D extends Machine {
     }
 
     init(parameters) { 
+        this._time_step = parameters.time_step;
         const origin = new Point({
             parent: parameters.parent,
             offset: Vector3.Zero(),
