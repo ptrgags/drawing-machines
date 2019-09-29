@@ -1,5 +1,13 @@
 const metadata = [
     {
+        date: "2019-10-02",
+        title: "Average Box",
+        desc: (
+            "A bunch of points oscillate on the edges of a box. What shape "
+            + "does the centroid of those points make?"
+        )
+    },
+    {
         date: "2019-10-01",
         title: "Gear Train Turntable",
         desc: (

@@ -1,7 +1,6 @@
 import { Vector3 } from "@babylonjs/core/Maths/math";
 
 import PartViewer from '../machines/PartViewer';
-import AverageBox from '../machines/AverageBox';
 import FourierSeries3D from '../machines/FourierSeries3D';
 import ThrobbingSphere from '../machines/ThrobbingSphere';
 import CentroidViewer from '../machines/CentroidViewer';
@@ -54,8 +53,6 @@ const sphere_spirals = new PartViewer({
     part: new RotatingSphere(),
     trace_length: 4000
 });
-const avg_box = new AverageBox();
-
 
 const box_vs_spirals = new CentroidViewer({
     parts: [
@@ -130,8 +127,6 @@ const machines = [
     fourier_ring,
     sphere_spirals,
     osc3,
-    gear_train,
-    avg_box,
 ];
 
 export {machines}

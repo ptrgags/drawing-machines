@@ -1,5 +1,8 @@
 import { Vector3 } from "@babylonjs/core/Maths/math";
+
 import GearTrain from '../machines/GearTrain';
+import AverageBox from '../machines/AverageBox';
+
 import { metadata } from './metadata_october2019';
 
 function oct01() {
@@ -16,7 +19,33 @@ function oct01() {
     });
 }
 
+function oct02() {
+    return new AverageBox({
+            size: new Vector3(4, 4, 4),
+            frequencies: [
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5,
+                0.6,
+                0.7,
+                0.8,
+                0.9,
+                1.0,
+                1.1,
+                1.2,
+            ],
+            weights: [1, 0.5, 0.5, 1, 1, 0.5, 0.5, 1, 1, 0.5, 0.5, 1],
+            phases: [
+                0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2
+            ].map(x => x * Math.PI / 4),
+            trace_length: 750,
+    });
+}
+
 const machines = [
+    oct02(),
     oct01()
 ];
 
