@@ -44,11 +44,6 @@ const fourier_ring = new PartViewer({
     trace_joint: 'translate_wave',
     time_step: 1/1000
 });
-const osc3 = new PartViewer({
-    part: new XYZOscillator(),
-    trace_joint: 'translate_wave',
-    trace_length: 2000
-});
 const sphere_spirals = new PartViewer({
     part: new RotatingSphere(),
     trace_length: 4000
@@ -126,7 +121,6 @@ const machines = [
     throb,
     fourier_ring,
     sphere_spirals,
-    osc3,
 ];
 
 export {machines}

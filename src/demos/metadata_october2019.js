@@ -1,18 +1,27 @@
 const metadata = [
     {
-        date: "2019-10-02",
-        title: "Average Box",
+        date: '2019-10-03',
+        title: 'Cylindrical Oscillator',
         desc: (
-            "A bunch of points oscillate on the edges of a box. What shape "
-            + "does the centroid of those points make?"
+            'A particle oscillates independently on all 3 axes. If the'
+            + ' settings are chosen carefully, the particle can be confined'
+            + ' to a cylinder.'
         )
     },
     {
-        date: "2019-10-01",
-        title: "Gear Train Turntable",
+        date: '2019-10-02',
+        title: 'Average Box',
         desc: (
-            "Gears rotate a turntable and the ends of a sliding arm. A pen"
-            + " attached to the arm draws on the turntable."
+            'A bunch of points oscillate on the edges of a box. What shape '
+            + 'does the centroid of those points make?'
+        )
+    },
+    {
+        date: '2019-10-01',
+        title: 'Gear Train Turntable',
+        desc: (
+            'Gears rotate a turntable and the ends of a sliding arm. A pen'
+            + ' attached to the arm draws on the turntable.'
         )
     },
 ]

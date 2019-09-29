@@ -2,6 +2,9 @@ import { Vector3 } from "@babylonjs/core/Maths/math";
 
 import GearTrain from '../machines/GearTrain';
 import AverageBox from '../machines/AverageBox';
+import PartViewer from '../machines/PartViewer';
+import XYZOscillator from '../parts/XYZOscillator';
+import Sine from '../waves/Sine';
 
 import { metadata } from './metadata_october2019';
 
@@ -44,9 +47,25 @@ function oct02() {
     });
 }
 
+function oct03() {
+    return new PartViewer({
+        part: new XYZOscillator({
+            parent: undefined,
+            amplitudes: new Vector3(0.5, 6, 0.5),
+            frequencies: new Vector3(4, 0.05, 4),
+            phases: new Vector3(0, 0, Math.PI / 2),
+            waves: [new Sine(), new Sine(), new Sine()]
+        }),
+        trace_joint: 'translate_wave',
+        trace_length: 2000,
+        time_step: 1/100
+    });
+}
+
 const machines = [
+    oct03(),
     oct02(),
-    oct01()
+    oct01(),
 ];
 
 export {machines, metadata}
