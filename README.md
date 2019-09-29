@@ -1,10 +1,14 @@
 # Drawing Machines (2019)
 
-Peter Gagliardi
+Peter Gagliardi (ptrgags@gmail.com)
 
 This repository is a simulation of various 3D drawing machines. 
 
-This is my alternative to this year's Inktober challenge. 
+This is my alternative to this year's Inktober challenge. Instead of 
+pen-and-ink drawings, I challenge myself to publish a new drawing machine
+simulation each day for the month of October.
+
+Check back often, and enjoy!
 
 ## What Are Drawing Machines?
 
