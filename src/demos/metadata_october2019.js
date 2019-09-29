@@ -3,7 +3,7 @@ const metadata = [
         date: '2019-10-06',
         title: 'Fourier Ring',
         desc: (
-            'A rough approximation of a square wave wrapped around a circle.'
+            'A rough approximation of a square wave wrapped around a cylinder.'
         )
     },
     {
