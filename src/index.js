@@ -17,9 +17,10 @@ const ENVIRONMENT = 'october2019';
  */
 function start(machine_module) {
     const machines = machine_module.machines;
+    const metadata = machine_module.metadata;
     const show_buttons = machines.length > 1;
     const renderer = new Renderer(show_buttons);
-    renderer.add_machines(machines);
+    renderer.set_machines(machines, metadata);
     renderer.start(); 
 }
 

@@ -1,5 +1,6 @@
 import { Vector3 } from "@babylonjs/core/Maths/math";
 import GearTrain from '../machines/GearTrain';
+import { metadata } from './metadata_october2019';
 
 function oct01() {
     return new GearTrain({
@@ -19,5 +20,5 @@ const machines = [
     oct01()
 ];
 
-export {machines}
+export {machines, metadata}
 

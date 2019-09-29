@@ -3,7 +3,9 @@ import { Scene } from '@babylonjs/core/scene';
 import { Vector3 } from '@babylonjs/core/Maths/math';
 import { ArcRotateCamera } from '@babylonjs/core/Cameras/arcRotateCamera';
 import { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
-import { AdvancedDynamicTexture, Button, Control} from '@babylonjs/gui/2D';
+import { 
+    AdvancedDynamicTexture, Button, Control, TextBlock
+} from '@babylonjs/gui/2D';
 
 export default class Renderer {
     constructor(show_buttons) {
@@ -22,12 +24,13 @@ export default class Renderer {
         this.light.intensity = 0.7;
 
         this.machines = [];
+        this.metadata = [];
         this.active_machine = 0;
         this.t = 0;
 
-        if (show_buttons) {
-            this.gui = this.init_gui();
-        }
+        this.title = undefined;
+        this.description = undefined;
+        this.gui = this.init_gui(show_buttons);
         
         this.machine_primitive = undefined;
     }
@@ -43,8 +46,34 @@ export default class Renderer {
         this.build();
     }
 
-    init_gui() {
+    init_gui(show_buttons) {
         const gui = AdvancedDynamicTexture.CreateFullscreenUI("UI");
+
+        const title = new TextBlock();
+        title.text = "Sample Machine (2019-09-29)"
+        title.color = "white";
+        title.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        title.fontSize = 24;
+        gui.addControl(title);
+        this.title = title;
+
+        const desc = new TextBlock();
+        desc.text = "blah blah blah blah asldkjfj;aslkdjv;askdfj;akdjf;akdfadf";
+        desc.color = "white";
+        desc.width = "500px";
+        desc.textWrapping = true;
+        desc.top = "26px";
+        desc.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+        gui.addControl(desc);
+        this.description = desc;
+
+
+        if (show_buttons) {
+            this.init_buttons(gui);
+        }
+    }
+
+    init_buttons(gui) {
         const prev = Button.CreateSimpleButton('prev', "< Previous");
         prev.width = "150px";
         prev.color = "white";
@@ -63,8 +92,11 @@ export default class Renderer {
         return gui;
     }
 
-    add_machines(new_machines) {
-        this.machines.push(...new_machines);
+    set_machines(machines, metadata) {
+        this.machines = machines;
+        if (metadata !== undefined) {
+            this.metadata = metadata;
+        }
     }
 
     get current_machine() {
@@ -90,6 +122,18 @@ export default class Renderer {
         }
         
         this.machine_primitive = this.current_machine.build(this.scene);  
+        this.update_metadata();
+    }
+
+    update_metadata() {
+        if (this.metadata.length < 1) {
+            return;
+        }
+        
+        const current = this.metadata[this.active_machine];
+        const title = `${current.title} (${current.date})`;
+        this.title.text = title;
+        this.description.text = current.desc;
     }
 
     start() {
