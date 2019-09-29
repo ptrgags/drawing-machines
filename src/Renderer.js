@@ -50,7 +50,6 @@ export default class Renderer {
         const gui = AdvancedDynamicTexture.CreateFullscreenUI("UI");
 
         const title = new TextBlock();
-        title.text = "Sample Machine (2019-09-29)"
         title.color = "white";
         title.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         title.fontSize = 24;
@@ -58,7 +57,6 @@ export default class Renderer {
         this.title = title;
 
         const desc = new TextBlock();
-        desc.text = "blah blah blah blah asldkjfj;aslkdjv;askdfj;akdjf;akdfadf";
         desc.color = "white";
         desc.width = "500px";
         desc.textWrapping = true;
@@ -66,6 +64,16 @@ export default class Renderer {
         desc.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
         gui.addControl(desc);
         this.description = desc;
+
+        const help = new TextBlock();
+        help.text = (
+            "Use the mouse/touchscreen to rotate the view. "
+            + "Ctrl + Left mouse to pan");
+        help.fontSize = 16;
+        help.color = "white";
+        help.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
+        help.textWrapping = true;
+        gui.addControl(help);
 
 
         if (show_buttons) {
