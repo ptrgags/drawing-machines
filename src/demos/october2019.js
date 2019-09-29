@@ -4,6 +4,7 @@ import GearTrain from '../machines/GearTrain';
 import AverageBox from '../machines/AverageBox';
 import PartViewer from '../machines/PartViewer';
 import XYZOscillator from '../parts/XYZOscillator';
+import RotatingSphere from '../parts/RotatingSphere';
 import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 import Fourier from '../waves/Fourier';
@@ -85,7 +86,29 @@ function oct04() {
     });
 }
 
+function oct05() {
+    return new PartViewer({
+        part: new RotatingSphere({
+            radius: 2,
+            axes: [
+                new Vector3(0, 1, 0),
+                new Vector3(0, 0, 1)
+            ],
+            angular_frequencies: [
+                0.1,
+                2,
+            ],
+            phases: [
+                0,
+                0
+            ],
+        }),
+        trace_length: 4000
+    });
+}
+
 const machines = [
+    oct05(),
     oct04(),
     oct03(),
     oct02(),

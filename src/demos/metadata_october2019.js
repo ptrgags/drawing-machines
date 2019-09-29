@@ -1,5 +1,12 @@
 const metadata = [
     {
+        date: '2019-10-05',
+        title: 'Spiral Sphere',
+        desc: (
+            'A particle is rotated around a point on multiple axes at once.'
+        )
+    },
+    {
         date: '2019-10-04',
         title: 'Fourier Oscillator',
         desc: (
