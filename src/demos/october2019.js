@@ -107,7 +107,25 @@ function oct05() {
     });
 }
 
+function oct06() {
+    const fourier = new Fourier({
+        amplitudes: [1, 1/3, 1/5, 1/7],
+        frequencies: [1, 3, 5, 7]
+    });
+    return new PartViewer({
+        part: new XYZOscillator({
+            amplitudes: new Vector3(1, 1, 1),
+            frequencies: new Vector3(1, 4, 1),
+            phases: new Vector3(0, 0, Math.PI / 2),
+            waves: [new Sine(), fourier, new Sine()],
+        }),
+        trace_joint: 'translate_wave',
+        time_step: 1/1000
+    });
+}
+
 const machines = [
+    oct06(),
     oct05(),
     oct04(),
     oct03(),
