@@ -75,7 +75,6 @@ export default class Renderer {
         help.textWrapping = true;
         gui.addControl(help);
 
-
         if (show_buttons) {
             this.init_buttons(gui);
         }
