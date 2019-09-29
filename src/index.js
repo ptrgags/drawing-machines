@@ -106,8 +106,21 @@ const torus_knot = new FourierSeries3D({
     trace_length: 10000,
 });
 
+const torus_knot2 = new FourierSeries3D({
+    axes: [
+        new Vector3(0, 1, 0),
+        new Vector3(0, 0, 1)
+    ],
+    amplitudes: [1, 0.5],
+    angular_frequencies: [23, 37],
+    phases: [0, 0],
+    time_step: 1/200,
+    trace_length: 2000,
+});
+
 const renderer = new Renderer();
 renderer.add_machines([
+    torus_knot2,
     torus_knot,
     fourier_spheres,
     fourier_discs,
