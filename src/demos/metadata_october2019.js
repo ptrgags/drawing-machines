@@ -1,5 +1,12 @@
 const metadata = [
     {
+        date: '2019-10-04',
+        title: 'Fourier Oscillator',
+        desc: (
+            'A sum of sines on two axes, and a a square wave in the third.'
+        )
+    },
+    {
         date: '2019-10-03',
         title: 'Cylindrical Oscillator',
         desc: (

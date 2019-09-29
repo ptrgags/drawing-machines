@@ -5,6 +5,8 @@ import AverageBox from '../machines/AverageBox';
 import PartViewer from '../machines/PartViewer';
 import XYZOscillator from '../parts/XYZOscillator';
 import Sine from '../waves/Sine';
+import Square from '../waves/Square';
+import Fourier from '../waves/Fourier';
 
 import { metadata } from './metadata_october2019';
 
@@ -50,7 +52,6 @@ function oct02() {
 function oct03() {
     return new PartViewer({
         part: new XYZOscillator({
-            parent: undefined,
             amplitudes: new Vector3(0.5, 6, 0.5),
             frequencies: new Vector3(4, 0.05, 4),
             phases: new Vector3(0, 0, Math.PI / 2),
@@ -62,7 +63,30 @@ function oct03() {
     });
 }
 
+function oct04() {
+    const fourier = new Fourier({
+        amplitudes: [1, 1/2, 1/4, 1/8],
+        frequencies: [1, 2, 3, 4]
+    });
+    const fourier2 = new Fourier({
+        amplitudes: [1, 2, 4, 8],
+        frequencies: [1, 2, 3, 4]
+    });
+    return new PartViewer({
+        part: new XYZOscillator({
+            amplitudes: new Vector3(3, 1, 2),
+            frequencies: new Vector3(1, 100, 1),
+            phases: new Vector3(0, 0, Math.PI / 2),
+            waves: [fourier, new Square(), fourier2],
+        }),
+        trace_joint: 'translate_wave',
+        trace_length: 1000,
+        time_step: 1/1000
+    });
+}
+
 const machines = [
+    oct04(),
     oct03(),
     oct02(),
     oct01(),
