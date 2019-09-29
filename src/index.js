@@ -10,6 +10,7 @@ import ThrobbingSphere from './machines/ThrobbingSphere';
 import CentroidViewer from './machines/CentroidViewer';
 import XYZOscillator from './parts/XYZOscillator';
 import RotatingSphere from './parts/RotatingSphere';
+import CenteredTrochoid from './parts/CenteredTrochoid';
 import Prefab from './parts/Prefab';
 import Fourier from './waves/Fourier';
 import Sine from './waves/Sine';
@@ -50,6 +51,11 @@ const osc3 = new PartViewer({
     part: new XYZOscillator(),
     trace_joint: 'translate_wave',
     trace_length: 2000
+});
+const hypocycloid = new PartViewer({
+    part: new CenteredTrochoid(),
+    trace_joint: 'translate_offset',
+    trace_length: 4000,
 });
 const sphere_spirals = new PartViewer({
     part: new RotatingSphere(),
@@ -120,6 +126,7 @@ const torus_knot2 = new FourierSeries3D({
 
 const renderer = new Renderer();
 renderer.add_machines([
+    hypocycloid,
     torus_knot2,
     torus_knot,
     fourier_spheres,

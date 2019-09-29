@@ -29,7 +29,7 @@ export default class Wheel extends Part {
         this.angular_velocity = parameters.angular_velocity;
 
         // Variables
-        this.angle = 0; 
+        this.angle = this.initial_angle; 
     }
 
     get transform_names() {
@@ -44,14 +44,12 @@ export default class Wheel extends Part {
         return "wheel";
     }
 
-    get parents() {
-        return [this.parent.part];
-    }
-
     build(scene) {
         const translate = new TransformNode(`${this.id}-translate`, scene);
         translate.position = this.offset;
-        translate.parent = this.parent.node;
+        if (this.parent !== undefined) {
+            translate.parent = this.parent.node;
+        }
         this.translate = translate;
 
         const rotate = new TransformNode(`${this.id}-rotate`, scene);
