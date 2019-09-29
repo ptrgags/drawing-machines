@@ -6,13 +6,13 @@ import { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
 import { AdvancedDynamicTexture, Button, Control} from '@babylonjs/gui/2D';
 
 export default class Renderer {
-    constructor() {
+    constructor(show_buttons) {
         this.canvas = document.getElementById('canvas');
         this.engine = new Engine(this.canvas);
         this.scene = new Scene(this.engine);
 
         this.camera = new ArcRotateCamera(
-            'camera', 0, Math.PI / 3, 10, Vector3.Zero(), this.scene);
+            'camera', 0, Math.PI / 3, 20, Vector3.Zero(), this.scene);
         this.camera.attachControl(this.canvas, true); 
         this.camera.lowerRadiusLimit = 0.1;
         this.camera.wheelDeltaPercentage = 0.01;
@@ -25,8 +25,10 @@ export default class Renderer {
         this.active_machine = 0;
         this.t = 0;
 
-        this.gui = this.init_gui();
-
+        if (show_buttons) {
+            this.gui = this.init_gui();
+        }
+        
         this.machine_primitive = undefined;
     }
 
@@ -37,6 +39,7 @@ export default class Renderer {
         this.active_machine += this.machines.length;
         this.active_machine %= this.machines.length;
         this.t = 0;
+        this.camera.radius = 20;
         this.build();
     }
 
