@@ -1,5 +1,4 @@
 import Joint from "../Joint";
-import PartViewer from '../machines/PartViewer';
 
 let part_count = 0;
 

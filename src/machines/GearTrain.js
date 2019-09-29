@@ -9,17 +9,20 @@ import Trace from '../parts/Trace';
 
 /**
  * Simple gear train with a sliding arm connecting two of the gears. The
- * arm has a pen attached.
+ * arm has a pen attached. The pen draws on a rotating turntable on a
+ * third gear.
  */
 export default class GearTrain extends Machine {
     get default_parameters() {
         return {
+            // Parent joint to attach to (optional)
+            parent: undefined,
             // Radii of each gear
             radii: [1, 2, 3, 5],
             // Half the thickness of all gears
             half_height: 0.1,
             // Initial angles of each gear
-            initial_angles: [0, 0, 0, 0],
+            phases: [0, 0, 0, 0],
             // Angle of the line connecting a previous gear to the next gear
             contact_angles: [Math.PI / 4, -Math.PI / 4, 0],
             // Angular velocity of the input gear
@@ -28,11 +31,9 @@ export default class GearTrain extends Machine {
             arm_gears: [0, 3],
             // Offsets of the endpoints of the arm with respect to the 
             // gear center before rotation
-            arm_offsets: [new Vector3(0.5, 1, 0.5), new Vector3(1, 1, 1)],
+            arm_offsets: [new Vector3(1, 0.2, 0), new Vector3(2, 0.2, 1)],
             // Offset of pen relative to the arm's local coordinates
             pen_offset: new Vector3(3, 0, 2.5),
-            // Offset of the root coordinate system 
-            camera_offset: new Vector3(0, 0.5, 0),
             // How many points in the trace
             trace_length: 1000,
         }
@@ -46,14 +47,14 @@ export default class GearTrain extends Machine {
 
         for (let i = 0; i < radii.length; i++) {
             const radius = radii[i];
-            const initial_angle = parameters.initial_angles[i];
+            const phase = parameters.phases[i];
 
             if (i === 0) {
                 const input_gear = new Wheel({
                     parent: origin.to_joint('translate'),
                     radius: radius,
                     offset: Vector3.Zero(),
-                    initial_angle: initial_angle,
+                    initial_angle: phase,
                     half_height: half_height,
                     angular_velocity: parameters.angular_velocity
                 });
@@ -63,7 +64,7 @@ export default class GearTrain extends Machine {
                     parent: gears[i - 1].to_joint('translate'),
                     radius: radius,
                     offset_angle: parameters.contact_angles[i - 1],
-                    initial_angle: initial_angle,
+                    initial_angle: phase,
                     half_height: half_height,
                 });
                 gears.push(driven_gear);
@@ -94,10 +95,7 @@ export default class GearTrain extends Machine {
     }
 
     init(parameters) {
-        const origin = new Point({
-            offset: parameters.camera_offset,
-            show_offset: true
-        });
+        const origin = new Point();
 
         const gears = this.make_gears(parameters, origin);
         const arm_points = this.make_arm_points(parameters, gears);
