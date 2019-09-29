@@ -48,6 +48,7 @@ export default class Renderer {
 
     init_gui(show_buttons) {
         const gui = AdvancedDynamicTexture.CreateFullscreenUI("UI");
+        gui.idealWidth = 800;
 
         const title = new TextBlock();
         title.color = "white";
@@ -145,6 +146,9 @@ export default class Renderer {
 
     start() {
         this.build();
+
+        window.addEventListener('resize', () => engine.resize());
+
         this.scene.registerAfterRender(() => this.on_frame());
 
         this.engine.runRenderLoop(() => {
