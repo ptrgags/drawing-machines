@@ -2,7 +2,6 @@ import { Vector3 } from "@babylonjs/core/Maths/math";
 
 import PartViewer from '../machines/PartViewer';
 import AverageBox from '../machines/AverageBox';
-import DoubleAverageBox from '../machines/DoubleAverageBox';
 import FourierSeries3D from '../machines/FourierSeries3D';
 import ThrobbingSphere from '../machines/ThrobbingSphere';
 import CentroidViewer from '../machines/CentroidViewer';
