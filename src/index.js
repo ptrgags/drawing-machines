@@ -9,7 +9,7 @@ import Renderer from './Renderer';
  * This is because I need to edit code quickly in order to publish something
  * each day. The gh-pages branch is where the "production" code lives.
  */
-const ENVIRONMENT = 'october2019';
+const ENVIRONMENT = 'experiments';
 
 /**
  * Once the machines have been loaded, set up the Renderer and start the

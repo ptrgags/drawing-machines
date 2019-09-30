@@ -130,7 +130,6 @@ const machines = [
     fourier_ring,
     sphere_spirals,
     osc3,
-    gear_train,
     avg_box,
 ];
 
