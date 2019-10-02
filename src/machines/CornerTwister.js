@@ -45,7 +45,7 @@ export default class CornerTwister extends Machine {
         const corners = this.get_corner_offsets(parameters.half_height);
         return corners.map((corner) => {
             return new Point({
-                parent: twist.to_joint('rotation'),
+                parent: twist.to_joint('rotate'),
                 offset: corner,
                 show_offset: true,
             });

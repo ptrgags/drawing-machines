@@ -35,7 +35,7 @@ export default class RotatingSphere extends Part {
     }
 
     get transform_names() {
-        return ['rotation', 'translate'];
+        return ['rotate', 'translate'];
     }
 
     get primitive_names() {
@@ -47,14 +47,14 @@ export default class RotatingSphere extends Part {
     }
 
     build(scene) {
-        const rotation = new TransformNode(`${this.id}-rotate`, scene);
-        rotation.rotationQuaternion = Quaternion.Identity();
-        rotation.parent = this.parent.node;
-        this.rotation = rotation;
+        const rotate = new TransformNode(`${this.id}-rotate`, scene);
+        rotate.rotationQuaternion = Quaternion.Identity();
+        rotate.parent = this.parent.node;
+        this.rotate = rotate;
 
         const translate = new TransformNode(`${this.id}-translate`, scene);
         translate.position = new Vector3(this.radius, 0, 0);
-        translate.parent = rotation;
+        translate.parent = rotate;
         this.translate = translate;
 
         const sphere = MeshBuilder.CreateSphere(`${this.id}-sphere`, {
@@ -97,6 +97,6 @@ export default class RotatingSphere extends Part {
     update(t) {
         const angles = this.compute_angles(t);  
         const quat = this.compose_rotations(angles);
-        this.rotation.rotationQuaternion = quat;
+        this.rotate.rotationQuaternion = quat;
     }
 }
