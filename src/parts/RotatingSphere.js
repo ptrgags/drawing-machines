@@ -23,6 +23,7 @@ export default class RotatingSphere extends Part {
                 0,
                 0
             ],
+            show_offset: true,
         }
     }
 
@@ -32,6 +33,7 @@ export default class RotatingSphere extends Part {
         this.angular_frequencies = parameters.angular_frequencies;
         this.axes = parameters.axes;
         this.phases = parameters.phases;
+        this.show_offset = parameters.show_offset;
     }
 
     get transform_names() {
@@ -56,6 +58,10 @@ export default class RotatingSphere extends Part {
         translate.position = new Vector3(this.radius, 0, 0);
         translate.parent = rotate;
         this.translate = translate;
+
+        if (!this.show_offset) {
+            return;
+        }
 
         const sphere = MeshBuilder.CreateSphere(`${this.id}-sphere`, {
             diameter: 0.2,

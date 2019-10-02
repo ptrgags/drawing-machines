@@ -95,7 +95,6 @@ export default class CenteredTrochoid extends Part {
         offset.parent = rotate_wheel;
         this.translate_offset = offset;
 
-
         if (!this.show_radii) {
             return;
         }
