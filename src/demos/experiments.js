@@ -6,6 +6,7 @@ import ThrobbingSphere from '../machines/ThrobbingSphere';
 import CentroidViewer from '../machines/CentroidViewer';
 import AverageBox from '../machines/AverageBox';
 import CenteredTrochoidChain from '../machines/CenteredTrochoidChain';
+import CornerTwister from '../machines/CornerTwister';
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
 import CenteredTrochoid from '../parts/CenteredTrochoid';
@@ -74,8 +75,10 @@ const torus_knot2 = new FourierSeries3D({
 });
 
 const nested_trochoids = new CenteredTrochoidChain();
+const corner_twister = new CornerTwister();
 
 const machines = [
+    corner_twister,
     nested_trochoids,
     torus_knot2,
     torus_knot,
