@@ -147,7 +147,7 @@ export default class Renderer {
     start() {
         this.build();
 
-        window.addEventListener('resize', () => engine.resize());
+        window.addEventListener('resize', () => this.engine.resize());
 
         this.scene.registerAfterRender(() => this.on_frame());
 
