@@ -7,10 +7,10 @@ export default class WavePalette extends Palette {
     get default_parameters() {
         return {
             waves: [new Sine(), new Sine(), new Sine(), new Sine()],
-            biases: [0.5, 0.5, 0.5, 1.0],
-            amplitudes: [0.5, 0.5, 0.5, 0],            
-            frequencies: [1, 1, 1, 0],
-            phases: [0, 0.1, 0.2, 0]
+            biases: [0.3, 0.5, 0.6, 1.0],
+            amplitudes: [0.5, 0.7, 0.5, 0],            
+            frequencies: [1, 4, 10, 0],
+            phases: [0.6, 0.1, 0.4, 0]
         }
     }
 
