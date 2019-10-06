@@ -7,7 +7,7 @@
 /*! exports provided: machines, metadata */
 /***/ (function(module, exports) {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (90:8)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n|         trace_length: 1000,\\n|         time_step: 1/1000\\n>         palette_freq: 1\\n|     });\\n| }\");\n\n//# sourceURL=webpack:///./src/demos/october2019.js?");
+eval("throw new Error(\"Module parse failed: Unexpected token (206:8)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n|             phases: [0, 0, 0, 0]\\n|         }) \\n>         palette: 0.5\\n|     });\\n| }\");\n\n//# sourceURL=webpack:///./src/demos/october2019.js?");
 
 /***/ })
 
