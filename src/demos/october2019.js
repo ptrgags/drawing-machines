@@ -228,9 +228,31 @@ function oct10() {
 }
 
 function oct11() {
+    return new FourierSeries3D({
+        axes: [
+            new Vector3(0, 1, 0),
+            new Vector3(0, 0, 1)
+        ],
+        amplitudes: [2, 0.5],
+        angular_frequencies: [1, 100],
+        phases: [0, 0],
+        time_step: 1/400,
+        trace_length: 10000,
+    });
 }
 
 function oct12() {
+    return new FourierSeries3D({
+        axes: [
+            new Vector3(0, 1, 0),
+            new Vector3(0, 0, 1)
+        ],
+        amplitudes: [1, 0.5],
+        angular_frequencies: [23, 37],
+        phases: [0, 0],
+        time_step: 1/200,
+        trace_length: 2000,
+    });
 }
 
 function oct13() {
@@ -240,6 +262,8 @@ function oct14() {
 }
 
 const machines = [
+    oct12(),
+    oct11(),
     oct10(),
     oct09(),
     oct08(),

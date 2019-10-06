@@ -1,5 +1,19 @@
 const metadata = [
     {
+        date: '2019-10-12',
+        title: 'Torus Knot',
+        desc: (
+            'A more intricate path on the surface of a torus'
+        )
+    },
+    {
+        date: '2019-10-11',
+        title: 'Torus Loop',
+        desc: (
+            'A path spinning around the surface of a torus'
+        )
+    },
+    {
         date: '2019-10-10',
         title: '3D Fourier Spheres',
         desc: (

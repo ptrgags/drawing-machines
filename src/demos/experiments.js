@@ -14,18 +14,6 @@ import Fourier from '../waves/Fourier';
 import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 
-const fourier_spheres = new FourierSeries3D({
-    axes: [
-        new Vector3(0, 1, 0),
-        new Vector3(0, 0, 1),
-        new Vector3(0, 1, 0),
-        new Vector3(0, 0, 1),
-    ],
-    angular_frequencies: [13, 19, 23, 43],
-    trace_length: 10000,
-    time_step: 1/1000,
-});
-
 const torus_knot = new FourierSeries3D({
     axes: [
         new Vector3(0, 1, 0),
@@ -58,7 +46,6 @@ const machines = [
     nested_trochoids,
     torus_knot2,
     torus_knot,
-    fourier_spheres,
 ];
 
 export {machines}
