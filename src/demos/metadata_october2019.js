@@ -1,5 +1,13 @@
 const metadata = [
     {
+        date: '2019-10-09',
+        title: 'Throbbing Sphere',
+        desc: (
+            'A spiral around a sphere... except the sphere is growing and'
+            + ' shrinking.'
+        )
+    },
+    {
         date: '2019-10-08',
         title: '2D Fourier Series',
         desc: (

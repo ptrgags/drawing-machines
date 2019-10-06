@@ -1,5 +1,6 @@
 import { Vector3 } from "@babylonjs/core/Maths/math";
 
+import ThrobbingSphere from '../machines/ThrobbingSphere';
 import CentroidViewer from '../machines/CentroidViewer';
 import FourierSeries3D from '../machines/FourierSeries3D';
 import GearTrain from '../machines/GearTrain';
@@ -195,6 +196,15 @@ function oct08() {
 }
 
 function oct09() {
+    return new ThrobbingSphere({
+        palette: new WavePalette({
+            biases: [0.7, 0.4, 0.0, 1.0],
+            amplitudes: [0.2, 0.1, 1.0, 0.0],
+            frequencies: [4, 3, 5, 1],
+            phases: [0, 0, 0, 0]
+        }),
+        palette_freq: 0.5
+    });
 }
 
 function oct10() {
@@ -213,6 +223,7 @@ function oct14() {
 }
 
 const machines = [
+    oct09(),
     oct08(),
     oct07(),
     oct06(),

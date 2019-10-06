@@ -2,7 +2,6 @@ import { Vector3 } from "@babylonjs/core/Maths/math";
 
 import PartViewer from '../machines/PartViewer';
 import FourierSeries3D from '../machines/FourierSeries3D';
-import ThrobbingSphere from '../machines/ThrobbingSphere';
 import CentroidViewer from '../machines/CentroidViewer';
 import AverageBox from '../machines/AverageBox';
 import CenteredTrochoidChain from '../machines/CenteredTrochoidChain';
@@ -15,9 +14,6 @@ import Fourier from '../waves/Fourier';
 import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 
-const throb = new ThrobbingSphere();
-
-const fourier_discs = new FourierSeries3D();
 const fourier_spheres = new FourierSeries3D({
     axes: [
         new Vector3(0, 1, 0),
@@ -63,8 +59,6 @@ const machines = [
     torus_knot2,
     torus_knot,
     fourier_spheres,
-    fourier_discs,
-    throb,
 ];
 
 export {machines}
