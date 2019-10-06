@@ -5,6 +5,7 @@ import "@babylonjs/core/Meshes/meshBuilder";
 
 import Part from './Part';
 import WavePalette from '../palettes/WavePalette';
+import ColorStops from '../palettes/ColorStops';
 import { required } from '../util';
 
 export default class Trace extends Part {
@@ -19,7 +20,8 @@ export default class Trace extends Part {
             // Number of points in the polyline
             num_points: 1000,
             // Palette to use for coloring the trace
-            palette: new WavePalette()
+            palette: new WavePalette(),
+            palette_freq: 2
         };
     }
 
@@ -31,6 +33,7 @@ export default class Trace extends Part {
         this.points = [];
         this.num_points = parameters.num_points;
         this.palette = parameters.palette;
+        this.palette_freq = parameters.palette_freq;
     }
 
     get primitive_names() {
@@ -62,7 +65,7 @@ export default class Trace extends Part {
 
     build(scene) {
         const points = this.init_points();
-        const colors = this.palette.get_palette(points.length);
+        const colors = this.palette.get_palette(points.length, this.palette_freq);
         const polyline = MeshBuilder.CreateLines(`${this.id}-polyline`, {
             colors: colors,
             updatable: true,
