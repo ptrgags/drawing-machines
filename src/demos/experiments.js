@@ -15,26 +15,6 @@ import Fourier from '../waves/Fourier';
 import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 
-const box_vs_spirals = new CentroidViewer({
-    parts: [
-        // TODO: Wrap with a trace
-        new RotatingSphere(),
-        new Prefab({
-            machine: new AverageBox()
-        }),
-    ],
-    joint_names: [
-        'translate',
-        'centroid.translate',
-    ],
-    offsets: [
-        new Vector3(10, 0, 0),
-        new Vector3(-10, 0, 0),
-    ],
-    weights: [1, 1],
-    trace_length: 10000
-});
-
 const throb = new ThrobbingSphere();
 
 const fourier_discs = new FourierSeries3D();
@@ -84,7 +64,6 @@ const machines = [
     torus_knot,
     fourier_spheres,
     fourier_discs,
-    box_vs_spirals,
     throb,
 ];
 

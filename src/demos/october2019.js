@@ -1,6 +1,7 @@
 import { Vector3 } from "@babylonjs/core/Maths/math";
 
 import CentroidViewer from '../machines/CentroidViewer';
+import FourierSeries3D from '../machines/FourierSeries3D';
 import GearTrain from '../machines/GearTrain';
 import AverageBox from '../machines/AverageBox';
 import PartViewer from '../machines/PartViewer';
@@ -10,6 +11,7 @@ import Prefab from '../parts/Prefab';
 import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 import Fourier from '../waves/Fourier';
+import WavePalette from '../palettes/WavePalette';
 
 import { metadata } from './metadata_october2019';
 
@@ -84,7 +86,8 @@ function oct04() {
         }),
         trace_joint: 'translate_wave',
         trace_length: 1000,
-        time_step: 1/1000
+        time_step: 1/1000,
+        palette_freq: 1
     });
 }
 
@@ -122,7 +125,8 @@ function oct06() {
             waves: [new Sine(), fourier, new Sine()],
         }),
         trace_joint: 'translate_wave',
-        time_step: 1/1000
+        time_step: 1/1000,
+        palette_freq: 1
     });
 }
 
@@ -170,6 +174,24 @@ function oct07() {
 }
 
 function oct08() {
+    return new FourierSeries3D({
+        amplitudes: [4, 3, 2, 1],
+        angular_frequencies: [1, 1.25, 3.25, 4.5].map(x => x * Math.PI / 4),
+        axes: [
+            new Vector3(0, 1, 0),
+            new Vector3(0, 1, 0),
+            new Vector3(0, 1, 0),
+            new Vector3(0, 1, 0),
+        ],
+        trace_length: 4000,
+        time_step: 1/100,
+        palette: new WavePalette({
+            biases: [0, 0.8, 0.8, 1.0],
+            amplitudes: [0, 0.5, 0.5, 0.0],
+            frequencies: [0, 3, 5, 1],
+            phases: [0, 0, 0, 0]
+        })
+    });
 }
 
 function oct09() {
@@ -191,6 +213,7 @@ function oct14() {
 }
 
 const machines = [
+    oct08(),
     oct07(),
     oct06(),
     oct05(),

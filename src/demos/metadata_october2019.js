@@ -1,5 +1,13 @@
 const metadata = [
     {
+        date: '2019-10-08',
+        title: '2D Fourier Series',
+        desc: (
+            'In 2D, Fourier Series can be thought of as a sum of rotating'
+            + ' vectors.'
+        )
+    },
+    {
         date: '2019-10-07',
         title: 'Box vs. Sphere',
         desc: (

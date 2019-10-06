@@ -4,6 +4,7 @@ import Machine from './Machine';
 import Point from '../parts/Point';
 import RotatingSphere from '../parts/RotatingSphere';
 import Trace from '../parts/Trace';
+import WavePalette from '../palettes/WavePalette';
 
 export default class FourierSeries3D extends Machine {
     get default_parameters() {
@@ -19,7 +20,9 @@ export default class FourierSeries3D extends Machine {
                 new Vector3(0, 1, 0),
             ],
             trace_length: 1000,
-            time_step: 1/100
+            time_step: 1/100,
+            palette: new WavePalette(),
+            palette_freq: 2,
         }
     }
 
@@ -57,7 +60,9 @@ export default class FourierSeries3D extends Machine {
         const trace = new Trace({ 
             source: last_sphere.to_joint('translate'),
             origin: origin.to_joint('translate'),
-            num_points: parameters.trace_length
+            num_points: parameters.trace_length,
+            palette: parameters.palette,
+            palette_freq: parameters.palette_freq
         });
 
         this.add_part(origin);
