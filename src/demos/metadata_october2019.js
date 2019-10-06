@@ -1,5 +1,13 @@
 const metadata = [
     {
+        date: '2019-10-10',
+        title: '3D Fourier Spheres',
+        desc: (
+            'A sum of points rotating along spheres, analagous to the 2D'
+            + 'fourier series case'
+        )
+    },
+    {
         date: '2019-10-09',
         title: 'Throbbing Sphere',
         desc: (
