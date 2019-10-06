@@ -1,9 +1,10 @@
-import { Vector3 } from '@babylonjs/core/Maths/math';
+import { Vector3, Color4 } from '@babylonjs/core/Maths/math';
 
 import Machine from './Machine';
 import Point from '../parts/Point';
 import Centroid from '../parts/Centroid';
 import Trace from '../parts/Trace';
+import ColorStops from '../palettes/ColorStops';
 import { required } from '../util';
 
 /**
@@ -18,6 +19,17 @@ export default class CentroidViewer extends Machine {
             offsets: [],
             weights: [],
             trace_length: 1000,
+            palette: new ColorStops({
+                colors: [
+                    new Color4(0, 1, 1, 1),
+                    new Color4(1, 0.5, 0, 1),
+                    new Color4(1, 0.5, 0, 1),
+                    new Color4(1, 0.5, 0, 1),
+                    new Color4(0, 1, 1, 1),
+                ],
+                stops: [0, 1/4, 1/2, 3/4, 1]
+            }),
+            palette_freq: 20
         };
     }
 
@@ -63,7 +75,9 @@ export default class CentroidViewer extends Machine {
         const trace = new Trace({ 
             source: centroid.to_joint('translate'),
             origin: origin.to_joint('translate'),
-            num_points: parameters.trace_length
+            num_points: parameters.trace_length,
+            palette: parameters.palette,
+            palette_freq: parameters.palette_freq
         });
 
         this.add_part(origin);

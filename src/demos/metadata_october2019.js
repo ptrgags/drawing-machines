@@ -1,5 +1,13 @@
 const metadata = [
     {
+        date: '2019-10-07',
+        title: 'Box vs. Sphere',
+        desc: (
+            'Taking the centroid of two paths combines them into a shape'
+            + ' that exhibits features of both.'
+        )
+    },
+    {
         date: '2019-10-06',
         title: 'Fourier Ring',
         desc: (

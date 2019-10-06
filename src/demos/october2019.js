@@ -1,10 +1,12 @@
 import { Vector3 } from "@babylonjs/core/Maths/math";
 
+import CentroidViewer from '../machines/CentroidViewer';
 import GearTrain from '../machines/GearTrain';
 import AverageBox from '../machines/AverageBox';
 import PartViewer from '../machines/PartViewer';
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
+import Prefab from '../parts/Prefab';
 import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 import Fourier from '../waves/Fourier';
@@ -124,7 +126,72 @@ function oct06() {
     });
 }
 
+function oct07() {
+    return new CentroidViewer({
+        parts: [
+            new Prefab({
+                machine: new PartViewer({
+                    part: new RotatingSphere({
+                        radius: 2,
+                        axes: [
+                            new Vector3(0, 1, 0),
+                            new Vector3(0, 0, 1)
+                        ],
+                        angular_frequencies: [
+                            5,
+                            3,
+                        ],
+                    }),
+                    trace_length: 1000,
+                    palette_freq: 1
+                })
+            }),
+            new Prefab({
+                machine: new AverageBox({
+                    frequencies: [
+                        3, 3, 3, 3,
+                        4, 4, 4, 4,
+                        7, 7, 7, 7
+                    ].map(x => x / 10)
+                })
+            }),
+        ],
+        joint_names: [
+            'part.translate',
+            'centroid.translate',
+        ],
+        offsets: [
+            new Vector3(8, 0, 0),
+            new Vector3(-8, 0, 0),
+        ],
+        weights: [1, 1],
+        trace_length: 5000
+    });
+}
+
+function oct08() {
+}
+
+function oct09() {
+}
+
+function oct10() {
+}
+
+function oct11() {
+}
+
+function oct12() {
+}
+
+function oct13() {
+}
+
+function oct14() {
+}
+
 const machines = [
+    oct07(),
     oct06(),
     oct05(),
     oct04(),

@@ -43,7 +43,7 @@ export default class PartViewer extends Machine {
         });
 
         this.add_part(origin);
-        this.add_part(part);
+        this.add_part(part, 'part');
         this.add_part(trace);
 
         return origin;
