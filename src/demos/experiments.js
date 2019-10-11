@@ -64,7 +64,9 @@ const machines = [
     springy_discs,
     sliding_turntable,
     triple_osc_throb,
+    */
     double_trochoid,
+    /*
     trochoid_car,
     osc_sphere,
     epitrochoid_tree,
