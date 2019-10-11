@@ -59,6 +59,7 @@ const springy_discs = new SpringyDiscs();
 const fractal_rotation = new FractalRotation();
 
 const machines = [
+    /*
     fractal_rotation,
     springy_discs,
     sliding_turntable,
@@ -69,9 +70,12 @@ const machines = [
     epitrochoid_tree,
     tree,
     rose_curves,
+    */
     //spiral_spheres,
+    /*
     centroid_of_orbits,
     paper_shaker,
+    */
     rotating_epitrochoid,
     turntable,
     corner_twister,
