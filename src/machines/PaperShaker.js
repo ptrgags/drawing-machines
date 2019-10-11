@@ -32,7 +32,7 @@ export default class PaperShaker extends Machine {
 
         const osc = new Oscillator({
             parent: left.to_joint('translate'),
-            axis: new Vector3(0, 0, 1),
+            direction: new Vector3(0, 1, 0).normalize(),
             frequency: parameters.osc_frequency,
             amplitude: parameters.osc_amp,
         });

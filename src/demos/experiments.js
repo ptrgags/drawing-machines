@@ -69,8 +69,8 @@ const machines = [
     osc_sphere,
     epitrochoid_tree,
     tree,
-    rose_curves,
     */
+    rose_curves,
     //spiral_spheres,
     centroid_of_orbits,
     paper_shaker,
