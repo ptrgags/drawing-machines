@@ -72,10 +72,8 @@ const machines = [
     rose_curves,
     */
     //spiral_spheres,
-    /*
-    centroid_of_orbits,
+    //centroid_of_orbits,
     paper_shaker,
-    */
     rotating_epitrochoid,
     turntable,
     corner_twister,
