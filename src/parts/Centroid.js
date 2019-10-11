@@ -10,6 +10,8 @@ export default class Centroid extends Part {
     get default_parameters() {
         return {
             points: [],
+            weights: [],
+            origin: undefined,
         }
     }
 
