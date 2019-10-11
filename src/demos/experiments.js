@@ -68,8 +68,8 @@ const machines = [
     trochoid_car,
     osc_sphere,
     epitrochoid_tree,
-    tree,
     */
+    tree,
     rose_curves,
     //spiral_spheres,
     centroid_of_orbits,
