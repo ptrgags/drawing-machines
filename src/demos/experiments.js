@@ -21,6 +21,7 @@ import ThrobbingTripleOsc from '../machines/ThrobbingTripleOsc';
 import SlidingTurntable from '../machines/SlidingTurntable';
 import SpringyDiscs from '../machines/SpringyDiscs';
 import FractalRotation from '../machines/FractalRotation';
+import OscillatorRing from '../machines/OscillatorRing';
 
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
@@ -52,6 +53,7 @@ const epitrochoid_tree = new FractalCenteredEpitrochoids();
 const osc_sphere = new OscillatorOnASphere();
 const trochoid_car = new CenteredTrochoidCar();
 const double_trochoid = new DoubleCentroidTrochoid();
+const osc_ring = new OscillatorRing();
 
 const triple_osc_throb = new ThrobbingTripleOsc();
 const sliding_turntable = new SlidingTurntable();
@@ -65,6 +67,7 @@ const machines = [
     sliding_turntable,
     triple_osc_throb,
     */
+    osc_ring,
     double_trochoid,
     trochoid_car,
     /*
