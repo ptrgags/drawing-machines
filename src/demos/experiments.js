@@ -65,8 +65,8 @@ const machines = [
     fractal_rotation,
     springy_discs,
     sliding_turntable,
-    triple_osc_throb,
     */
+    triple_osc_throb,
     osc_ring,
     double_trochoid,
     trochoid_car,
