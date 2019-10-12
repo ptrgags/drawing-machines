@@ -21,6 +21,7 @@ import ThrobbingTripleOsc from '../machines/ThrobbingTripleOsc';
 import SlidingTurntable from '../machines/SlidingTurntable';
 import SpringyDiscs from '../machines/SpringyDiscs';
 import FractalRotation from '../machines/FractalRotation';
+import OscPyramid from '../machines/OscPyramid';
 import OscillatorRing from '../machines/OscillatorRing';
 
 import XYZOscillator from '../parts/XYZOscillator';
@@ -57,10 +58,12 @@ const osc_ring = new OscillatorRing();
 
 const triple_osc_throb = new ThrobbingTripleOsc();
 const sliding_turntable = new SlidingTurntable();
+const osc_pyramid = new OscPyramid();
 const springy_discs = new SpringyDiscs();
 const fractal_rotation = new FractalRotation();
 
 const machines = [
+    osc_pyramid,
     /*
     fractal_rotation,
     springy_discs,
