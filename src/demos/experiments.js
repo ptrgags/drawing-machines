@@ -66,8 +66,8 @@ const machines = [
     triple_osc_throb,
     */
     double_trochoid,
-    /*
     trochoid_car,
+    /*
     osc_sphere,
     epitrochoid_tree,
     */

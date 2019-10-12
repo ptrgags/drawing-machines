@@ -24,6 +24,7 @@ export default class RotatingSphere extends Part {
                 0
             ],
             show_offset: true,
+            start_direction: new Vector3(1, 0, 0)
         }
     }
 
@@ -34,6 +35,7 @@ export default class RotatingSphere extends Part {
         this.axes = parameters.axes;
         this.phases = parameters.phases;
         this.show_offset = parameters.show_offset;
+        this.start_direction = parameters.start_direction;
     }
 
     get transform_names() {
@@ -55,7 +57,7 @@ export default class RotatingSphere extends Part {
         this.rotate = rotate;
 
         const translate = new TransformNode(`${this.id}-translate`, scene);
-        translate.position = new Vector3(this.radius, 0, 0);
+        translate.position = this.start_direction.scale(this.radius);
         translate.parent = rotate;
         this.translate = translate;
 
