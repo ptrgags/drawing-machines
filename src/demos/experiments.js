@@ -39,14 +39,55 @@ const turntable = new RogueTurntable();
 const rotating_epitrochoid = new RotatingEpitrochoid();
 const paper_shaker = new PaperShaker();
 const centroid_of_orbits = new CentroidOfOrbits();
-/*
 const spiral_spheres = new CentroidViewer({
     parts: [
-        new RotatingSphere(),
-        new RotatingSphere(),
-    ]
+        new Prefab({
+            machine: new PartViewer({
+                part: new RotatingSphere({
+                    radius: 2,
+                    start_direction: new Vector3(-1, 0, 0),
+                    axes: [
+                        new Vector3(0, 1, 0),
+                        new Vector3(0, 0, 1)
+                    ],
+                    angular_frequencies: [
+                        13,
+                        11,
+                    ],
+                }),
+                trace_length: 1000,
+                palette_freq: 1
+            })
+        }),
+        new Prefab({
+            machine: new PartViewer({
+                part: new RotatingSphere({
+                    radius: 2,
+                    axes: [
+                        new Vector3(0, 1, 0),
+                        new Vector3(0, 0, 1)
+                    ],
+                    angular_frequencies: [
+                        5,
+                        3,
+                    ],
+                }),
+                trace_length: 1000,
+                palette_freq: 1
+            })
+        }),
+    ],
+    joint_names: [
+        'part.translate',
+        'part.translate',
+    ],
+    offsets: [
+        new Vector3(8, 0, 0),
+        new Vector3(-8, 0, 0),
+    ],
+    weights: [1, 1],
+    trace_length: 5000
 });
-*/
 
 const rose_curves = new RoseCurves();
 const tree = new RotatingTree();
@@ -63,6 +104,7 @@ const springy_discs = new SpringyDiscs();
 const fractal_rotation = new FractalRotation();
 
 const machines = [
+    spiral_spheres,
     osc_pyramid,
     /*
     fractal_rotation,
@@ -79,7 +121,6 @@ const machines = [
     */
     tree,
     rose_curves,
-    //spiral_spheres,
     centroid_of_orbits,
     paper_shaker,
     rotating_epitrochoid,
