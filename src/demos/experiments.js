@@ -104,13 +104,13 @@ const springy_discs = new SpringyDiscs();
 const fractal_rotation = new FractalRotation();
 
 const machines = [
+    sliding_turntable,
     osc_sphere,
     spiral_spheres,
     osc_pyramid,
     /*
     fractal_rotation,
     springy_discs,
-    sliding_turntable,
     */
     triple_osc_throb,
     osc_ring,
