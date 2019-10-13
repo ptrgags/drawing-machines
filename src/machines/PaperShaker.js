@@ -51,7 +51,7 @@ export default class PaperShaker extends Machine {
             source: sphere.to_joint('translate'),
             target: osc.to_joint('translate_wave'),
             origin: osc.to_joint('translate_wave'),
-            trace_length: parameters.trace_length
+            num_points: parameters.trace_length
         });
 
         this.add_part(origin);

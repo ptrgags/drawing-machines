@@ -10,6 +10,7 @@ import CenteredTrochoidChain from '../machines/CenteredTrochoidChain';
 import CornerTwister from '../machines/CornerTwister';
 import RogueTurntable from '../machines/RogueTurntable';
 import RotatingEpitrochoid from '../machines/RotatingEpitrochoid';
+import PaperShaker from '../machines/PaperShaker';
 
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
@@ -315,7 +316,14 @@ function oct16() {
 }
 
 function oct17() {
-
+    return new PaperShaker({
+        trace_length: 8000,
+        osc_offset: new Vector3(-3, 0, 0),
+        rotation_offset: new Vector3(3, 0, 0),
+        sphere_frequency: 4,
+        osc_amp: 2,
+        osc_frequency: 0.4,
+    });
 }
 
 function oct18() {
@@ -331,6 +339,7 @@ function oct20() {
 }
 
 const machines = [
+    oct17(),
     oct16(),
     oct15(),
     oct14(),
