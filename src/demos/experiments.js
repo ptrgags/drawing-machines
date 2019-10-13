@@ -5,7 +5,6 @@ import FourierSeries3D from '../machines/FourierSeries3D';
 import CentroidViewer from '../machines/CentroidViewer';
 import AverageBox from '../machines/AverageBox';
 
-import RotatingTree from '../machines/RotatingTree';
 import FractalCenteredEpitrochoids from '../machines/FractalCenteredEpitrochoids';
 import OscillatorOnASphere from '../machines/OscillatorOnASphere';
 import CenteredTrochoidCar from '../machines/CenteredTrochoidCar';
@@ -26,7 +25,6 @@ import Fourier from '../waves/Fourier';
 import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 
-const tree = new RotatingTree();
 const epitrochoid_tree = new FractalCenteredEpitrochoids();
 const osc_sphere = new OscillatorOnASphere();
 const trochoid_car = new CenteredTrochoidCar();
@@ -55,7 +53,6 @@ const machines = [
     /*
     epitrochoid_tree,
     */
-    tree,
 ];
 
 export {machines}

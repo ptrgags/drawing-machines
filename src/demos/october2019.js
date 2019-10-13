@@ -13,6 +13,7 @@ import RotatingEpitrochoid from '../machines/RotatingEpitrochoid';
 import PaperShaker from '../machines/PaperShaker';
 import CentroidOfOrbits from '../machines/CentroidOfOrbits';
 import RoseCurves from '../machines/RoseCurves';
+import RotatingTree from '../machines/RotatingTree';
 
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
@@ -413,7 +414,17 @@ function oct20() {
     });
 }
 
+function oct21() {
+    return new RotatingTree({
+        trace_length: 100,
+        height: 3,
+        radii: [0, 1.25, 1.5, 2],
+        angular_frequencies: [0, 0.5, 1, 1.5],
+    });
+}
+
 const machines = [
+    oct21(),
     oct20(),
     oct19(),
     oct18(),
