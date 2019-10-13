@@ -11,6 +11,7 @@ import CornerTwister from '../machines/CornerTwister';
 import RogueTurntable from '../machines/RogueTurntable';
 import RotatingEpitrochoid from '../machines/RotatingEpitrochoid';
 import PaperShaker from '../machines/PaperShaker';
+import CentroidOfOrbits from '../machines/CentroidOfOrbits';
 
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
@@ -327,7 +328,25 @@ function oct17() {
 }
 
 function oct18() {
-
+    return new CentroidOfOrbits({
+        trace_length: 1000,
+        orbit_length: 200,
+        axes: [
+            new Vector3(1, 1, 1).normalize(),
+            new Vector3(0, 1, 0),
+            new Vector3(1, 0, 2).normalize(),
+        ],
+        start_directions: [
+            new Vector3(1, -1, 1).normalize(),
+            new Vector3(1, 0, 0).normalize(),
+            new Vector3(2, 0, -1).normalize(),
+        ],
+        frequencies: [
+            3,
+            5,
+            7,
+        ]
+    });
 }
 
 function oct19() {
@@ -339,6 +358,7 @@ function oct20() {
 }
 
 const machines = [
+    oct18(),
     oct17(),
     oct16(),
     oct15(),

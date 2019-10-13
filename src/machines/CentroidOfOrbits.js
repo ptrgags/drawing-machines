@@ -17,6 +17,11 @@ export default class CentroidOfOrbits extends Machine {
                 new Vector3(0, 1, 0),
                 new Vector3(-1, 1, 2).normalize(),
             ],
+            start_directions: [
+                new Vector3(1, -1, 1).normalize(),
+                new Vector3(1, 0, 0).normalize(),
+                new Vector3(1, -1, 1).normalize(),
+            ],
             frequencies: [
                 3,
                 5,
@@ -31,6 +36,7 @@ export default class CentroidOfOrbits extends Machine {
                 parent: origin.to_joint('translate'),
                 axes: [axis],
                 angular_frequencies: [parameters.frequencies[i]],
+                start_direction: parameters.start_directions[i],
             });
         });
     }
@@ -40,7 +46,7 @@ export default class CentroidOfOrbits extends Machine {
             return new Trace({
                 source: orbit.to_joint('translate'),
                 origin: origin.to_joint('translate'),
-                trace_length: parameters.orbit_length,
+                num_points: parameters.orbit_length,
                 palette: new ColorStops({
                     stops: [0, 1],
                     colors: [
@@ -66,7 +72,7 @@ export default class CentroidOfOrbits extends Machine {
         const trace = new Trace({
             source: centroid.to_joint('translate'),
             origin: origin.to_joint('translate'),
-            trace_length: parameters.trace_length,
+            num_points: parameters.trace_length,
         });
 
         this.add_part(origin);

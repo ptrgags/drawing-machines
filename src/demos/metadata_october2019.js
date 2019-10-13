@@ -1,9 +1,17 @@
 const metadata = [
     {
+        date: '2019-10-18',
+        title: 'Centroid of Orbits',
+        desc: (
+            'Find the centroid of orbits around a sphere'
+        )
+    },
+    {
         date: '2019-10-17',
         title: '3D Paper Shaker',
         desc: (
-            'Like trying to draw a circle, except the paper is moving up and down'
+            'Like trying to draw a circle, except the paper is moving up '
+            + 'and down'
         )
     },
     {
@@ -52,7 +60,7 @@ const metadata = [
         date: '2019-10-10',
         title: '3D Fourier Spheres',
         desc: (
-            'A sum of points rotating along spheres, analagous to the 2D'
+            'A sum of points rotating along spheres, analagous to the 2D '
             + 'fourier series case'
         )
     },

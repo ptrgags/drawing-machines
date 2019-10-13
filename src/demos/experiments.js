@@ -5,7 +5,6 @@ import FourierSeries3D from '../machines/FourierSeries3D';
 import CentroidViewer from '../machines/CentroidViewer';
 import AverageBox from '../machines/AverageBox';
 
-import CentroidOfOrbits from '../machines/CentroidOfOrbits';
 import RoseCurves from '../machines/RoseCurves';
 import RotatingTree from '../machines/RotatingTree';
 import FractalCenteredEpitrochoids from '../machines/FractalCenteredEpitrochoids';
@@ -28,7 +27,6 @@ import Fourier from '../waves/Fourier';
 import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 
-const centroid_of_orbits = new CentroidOfOrbits();
 const spiral_spheres = new CentroidViewer({
     parts: [
         new Prefab({
