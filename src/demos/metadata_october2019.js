@@ -1,5 +1,12 @@
 const metadata = [
     {
+        date: '2019-10-19',
+        title: 'Centroid of Spiral Spheres',
+        desc: (
+            'Find the centroid of two spiraling orbits'
+        )
+    },
+    {
         date: '2019-10-18',
         title: 'Centroid of Orbits',
         desc: (
