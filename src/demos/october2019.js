@@ -12,6 +12,7 @@ import RogueTurntable from '../machines/RogueTurntable';
 import RotatingEpitrochoid from '../machines/RotatingEpitrochoid';
 import PaperShaker from '../machines/PaperShaker';
 import CentroidOfOrbits from '../machines/CentroidOfOrbits';
+import RoseCurves from '../machines/RoseCurves';
 
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
@@ -402,10 +403,18 @@ function oct19() {
 }
 
 function oct20() {
-
+    return new RoseCurves({
+        trace_length: 1000,
+        osc_offset: new Vector3(-3, 0, 0),
+        rotation_offset: new Vector3(3, 0, 0),
+        sphere_frequency: 2,
+        osc_amp: 2,
+        osc_frequency: 0.5,
+    });
 }
 
 const machines = [
+    oct20(),
     oct19(),
     oct18(),
     oct17(),
