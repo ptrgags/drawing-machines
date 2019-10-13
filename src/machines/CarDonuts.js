@@ -5,7 +5,7 @@ import Point from '../parts/Point';
 import Trace from '../parts/Trace';
 import RotatingSphere from '../parts/RotatingSphere';
 
-export default class CenteredTrochoidCar extends Machine {
+export default class CarDonuts extends Machine {
     get default_parameters() {
         return {
             trace_length: 1000,
@@ -25,7 +25,7 @@ export default class CenteredTrochoidCar extends Machine {
     }
 
     make_wheel_offsets(parameters, rotation) {
-        return CenteredTrochoidCar.OFFSETS.map(offset => {
+        return CarDonuts.OFFSETS.map(offset => {
             return new Point({
                 parent: rotation.to_joint('translate'),
                 offset,
@@ -55,7 +55,7 @@ export default class CenteredTrochoidCar extends Machine {
             return new Trace({
                 source: wheel.to_joint('translate'),
                 origin: origin.to_joint('translate'),
-                trace_length: parameters.trace_length
+                num_points: parameters.trace_length
             });
         });
     }

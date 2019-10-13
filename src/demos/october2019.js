@@ -15,6 +15,7 @@ import CentroidOfOrbits from '../machines/CentroidOfOrbits';
 import RoseCurves from '../machines/RoseCurves';
 import RotatingTree from '../machines/RotatingTree';
 import OscillatorOnASphere from '../machines/OscillatorOnASphere';
+import CarDonuts from '../machines/CarDonuts';
 
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
@@ -425,12 +426,20 @@ function oct21() {
 }
 
 function oct22() {
-    return new OscillatorOnASphere({
+    return new OscillatorOnASphere();
+}
 
+function oct23() {
+    return new CarDonuts({
+        trace_length: 5000,
+        wheel_radius: 0.4,
+        car_frequency: 0.5,
+        wheel_frequency: 8,
     });
 }
 
 const machines = [
+    oct23(),
     oct22(),
     oct21(),
     oct20(),

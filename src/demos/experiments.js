@@ -6,7 +6,6 @@ import CentroidViewer from '../machines/CentroidViewer';
 import AverageBox from '../machines/AverageBox';
 
 import FractalCenteredEpitrochoids from '../machines/FractalCenteredEpitrochoids';
-import CenteredTrochoidCar from '../machines/CenteredTrochoidCar';
 import DoubleCentroidTrochoid from '../machines/DoubleCentroidTrochoid';
 import ThrobbingTripleOsc from '../machines/ThrobbingTripleOsc';
 import SlidingTurntable from '../machines/SlidingTurntable';
@@ -25,7 +24,6 @@ import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 
 const epitrochoid_tree = new FractalCenteredEpitrochoids();
-const trochoid_car = new CenteredTrochoidCar();
 const double_trochoid = new DoubleCentroidTrochoid();
 const osc_ring = new OscillatorRing();
 
@@ -46,7 +44,6 @@ const machines = [
     triple_osc_throb,
     osc_ring,
     double_trochoid,
-    trochoid_car,
     /*
     epitrochoid_tree,
     */

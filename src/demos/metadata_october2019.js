@@ -1,5 +1,12 @@
 const metadata = [
     {
+        date: '2019-10-23',
+        title: 'Car Donuts',
+        desc: (
+            "Follow points on a car's wheels while the car drives in circles"
+        )
+    },
+    {
         date: '2019-10-22',
         title: 'Oscillator on a Sphere',
         desc: (
