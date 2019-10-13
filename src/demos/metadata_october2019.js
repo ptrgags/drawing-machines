@@ -1,5 +1,12 @@
 const metadata = [
     {
+        date: '2019-10-16',
+        title: 'Rotating Centered Trochoid',
+        desc: (
+            'A spirograph rotating around a point'
+        )
+    },
+    {
         date: '2019-10-15',
         title: 'Rogue Phonograph',
         desc: (

@@ -5,11 +5,13 @@ import Point from '../parts/Point';
 import Trace from '../parts/Trace';
 import RotatingSphere from '../parts/RotatingSphere';
 import CenteredTrochoid from '../parts/CenteredTrochoid';
+import WavePalette from '../palettes/WavePalette';
 
 export default class RotatingEpitrochoid extends Machine {
     get default_parameters() {
         return {
             trace_length: 8000,
+            palette: new WavePalette,
             rotate_frequency: 0.6,
             trochoid_frequency: 3,
             frame_radius: 1,
@@ -42,7 +44,8 @@ export default class RotatingEpitrochoid extends Machine {
         const trace = new Trace({
             source: trochoid.to_joint('translate_offset'),
             origin: origin.to_joint('translate'),
-            trace_length: parameters.trace_length,
+            num_points: parameters.trace_length,
+            palette: parameters.palette,
         });
 
         this.add_part(origin);

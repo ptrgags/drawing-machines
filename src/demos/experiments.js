@@ -5,7 +5,6 @@ import FourierSeries3D from '../machines/FourierSeries3D';
 import CentroidViewer from '../machines/CentroidViewer';
 import AverageBox from '../machines/AverageBox';
 
-import RotatingEpitrochoid from '../machines/RotatingEpitrochoid';
 import PaperShaker from '../machines/PaperShaker';
 import CentroidOfOrbits from '../machines/CentroidOfOrbits';
 import RoseCurves from '../machines/RoseCurves';
@@ -30,7 +29,6 @@ import Fourier from '../waves/Fourier';
 import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 
-const rotating_epitrochoid = new RotatingEpitrochoid();
 const paper_shaker = new PaperShaker();
 const centroid_of_orbits = new CentroidOfOrbits();
 const spiral_spheres = new CentroidViewer({
@@ -117,7 +115,6 @@ const machines = [
     rose_curves,
     centroid_of_orbits,
     paper_shaker,
-    rotating_epitrochoid,
 ];
 
 export {machines}

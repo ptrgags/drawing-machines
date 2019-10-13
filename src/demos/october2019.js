@@ -9,6 +9,7 @@ import PartViewer from '../machines/PartViewer';
 import CenteredTrochoidChain from '../machines/CenteredTrochoidChain';
 import CornerTwister from '../machines/CornerTwister';
 import RogueTurntable from '../machines/RogueTurntable';
+import RotatingEpitrochoid from '../machines/RotatingEpitrochoid';
 
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
@@ -297,7 +298,20 @@ function oct15() {
 }
 
 function oct16() {
-
+    return new RotatingEpitrochoid({ 
+        trace_length: 1000,
+        palette: new WavePalette({
+            biases: [0.2, 0.5, 0, 1],
+            amplitudes: [0.5, 1, 0, 0],
+            frequencies: [4, 1, 0, 1],
+            phases: [0.25, 0, 0, 0] 
+        }),
+        rotate_frequency: 0.6,
+        trochoid_frequency: 3,
+        frame_radius: 1,
+        wheel_radius: 0.1,
+        show_radii: true,
+    });
 }
 
 function oct17() {
@@ -317,6 +331,7 @@ function oct20() {
 }
 
 const machines = [
+    oct16(),
     oct15(),
     oct14(),
     oct13(),
