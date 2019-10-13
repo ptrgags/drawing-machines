@@ -6,6 +6,8 @@ import FourierSeries3D from '../machines/FourierSeries3D';
 import GearTrain from '../machines/GearTrain';
 import AverageBox from '../machines/AverageBox';
 import PartViewer from '../machines/PartViewer';
+import CenteredTrochoidChain from '../machines/CenteredTrochoidChain';
+
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
 import Prefab from '../parts/Prefab';
@@ -256,12 +258,46 @@ function oct12() {
 }
 
 function oct13() {
+    return new CenteredTrochoidChain({
+        parent: undefined,
+        radii: [2.5, 2, -0.1],
+        angular_frequencies: [2, 3],
+        offset: new Vector3(1.3, 0, 0),
+        trace_length: 4000,
+        time_step: 1/200,
+    }); 
 }
 
 function oct14() {
+
+}
+
+function oct15() {
+
+}
+
+function oct16() {
+
+}
+
+function oct17() {
+
+}
+
+function oct18() {
+
+}
+
+function oct19() {
+
+}
+
+function oct20() {
+
 }
 
 const machines = [
+    oct13(),
     oct12(),
     oct11(),
     oct10(),

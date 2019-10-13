@@ -126,7 +126,6 @@ const machines = [
     rotating_epitrochoid,
     turntable,
     corner_twister,
-    nested_trochoids,
 ];
 
 export {machines}
