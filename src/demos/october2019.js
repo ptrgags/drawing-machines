@@ -7,6 +7,7 @@ import GearTrain from '../machines/GearTrain';
 import AverageBox from '../machines/AverageBox';
 import PartViewer from '../machines/PartViewer';
 import CenteredTrochoidChain from '../machines/CenteredTrochoidChain';
+import CornerTwister from '../machines/CornerTwister';
 
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
@@ -269,7 +270,16 @@ function oct13() {
 }
 
 function oct14() {
-
+    return new CornerTwister({
+        // [top, bottom]
+        amplitudes: [0.5, 0.5],
+        frequencies: [2, 4],
+        phases: [0, 0],
+        twist_frequencies: [1/4, -1/2],
+        half_height: 2,
+        waves: [new Sine(), new Sine()],
+        trace_length: 8000,
+    });
 }
 
 function oct15() {
@@ -297,6 +307,7 @@ function oct20() {
 }
 
 const machines = [
+    oct14(),
     oct13(),
     oct12(),
     oct11(),
