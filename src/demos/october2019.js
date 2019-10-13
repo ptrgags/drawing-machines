@@ -8,6 +8,7 @@ import AverageBox from '../machines/AverageBox';
 import PartViewer from '../machines/PartViewer';
 import CenteredTrochoidChain from '../machines/CenteredTrochoidChain';
 import CornerTwister from '../machines/CornerTwister';
+import RogueTurntable from '../machines/RogueTurntable';
 
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
@@ -283,7 +284,16 @@ function oct14() {
 }
 
 function oct15() {
-
+    return new RogueTurntable({
+        turntable_center: new Vector3(-1, 0, 0),
+        turntable_angular_velocity: 3,
+        turntable_radius: 3,
+        arm_angular_frequency: 0.1,
+        arm_center: new Vector3(2, 0.2, 1),
+        arm_radius: 3,
+        arm_phase: 0.6 * Math.PI,
+        trace_length: 8000
+    });
 }
 
 function oct16() {
@@ -307,6 +317,7 @@ function oct20() {
 }
 
 const machines = [
+    oct15(),
     oct14(),
     oct13(),
     oct12(),

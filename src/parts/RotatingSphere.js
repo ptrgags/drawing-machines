@@ -80,6 +80,8 @@ export default class RotatingSphere extends Part {
         }, scene);
         line.parent = translate;
         this.line_primitive = line;
+
+        this.update(0);
     }
 
     compute_angles(t) {

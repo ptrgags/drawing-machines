@@ -4,7 +4,6 @@ import PartViewer from '../machines/PartViewer';
 import FourierSeries3D from '../machines/FourierSeries3D';
 import CentroidViewer from '../machines/CentroidViewer';
 import AverageBox from '../machines/AverageBox';
-import RogueTurntable from '../machines/RogueTurntable';
 
 import RotatingEpitrochoid from '../machines/RotatingEpitrochoid';
 import PaperShaker from '../machines/PaperShaker';
@@ -31,7 +30,6 @@ import Fourier from '../waves/Fourier';
 import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 
-const turntable = new RogueTurntable();
 const rotating_epitrochoid = new RotatingEpitrochoid();
 const paper_shaker = new PaperShaker();
 const centroid_of_orbits = new CentroidOfOrbits();
@@ -120,7 +118,6 @@ const machines = [
     centroid_of_orbits,
     paper_shaker,
     rotating_epitrochoid,
-    turntable,
 ];
 
 export {machines}
