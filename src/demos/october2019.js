@@ -14,6 +14,7 @@ import PaperShaker from '../machines/PaperShaker';
 import CentroidOfOrbits from '../machines/CentroidOfOrbits';
 import RoseCurves from '../machines/RoseCurves';
 import RotatingTree from '../machines/RotatingTree';
+import OscillatorOnASphere from '../machines/OscillatorOnASphere';
 
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
@@ -423,7 +424,14 @@ function oct21() {
     });
 }
 
+function oct22() {
+    return new OscillatorOnASphere({
+
+    });
+}
+
 const machines = [
+    oct22(),
     oct21(),
     oct20(),
     oct19(),
