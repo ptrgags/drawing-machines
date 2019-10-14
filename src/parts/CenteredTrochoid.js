@@ -95,6 +95,8 @@ export default class CenteredTrochoid extends Part {
         offset.parent = rotate_wheel;
         this.translate_offset = offset;
 
+        this.update(0);
+
         if (!this.show_radii) {
             return;
         }
@@ -125,7 +127,6 @@ export default class CenteredTrochoid extends Part {
         }, scene);
         line_offset.parent = offset;
         this.offset_primitive = line_offset;
-
     }
 
     get wheel_ratio() {
