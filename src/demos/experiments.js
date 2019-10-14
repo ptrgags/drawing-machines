@@ -34,18 +34,14 @@ const springy_discs = new SpringyDiscs();
 const fractal_rotation = new FractalRotation();
 
 const machines = [
+    fractal_rotation,
     springy_discs,
     epitrochoid_tree,
     sliding_turntable,
     osc_pyramid,
-    /*
-    fractal_rotation,
-    */
     triple_osc_throb,
     osc_ring,
     double_trochoid,
-    /*
-    */
 ];
 
 export {machines}
