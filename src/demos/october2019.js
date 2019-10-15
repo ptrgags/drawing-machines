@@ -474,7 +474,16 @@ function oct25() {
     });
 }
 
+function oct26() {
+    return new ThrobbingTripleOsc({
+        trace_length: 4000,
+        palette: new WavePalette(),
+        palette_freq: 0.5
+    });
+}
+
 const machines = [
+    oct26(),
     oct25(),
     oct24(),
     oct23(),

@@ -1,5 +1,12 @@
 const metadata = [
     {
+        date: '2019-10-26',
+        title: 'Throbbing Triple Oscillator',
+        desc: (
+            'Triple oscillator + scaling in and out'
+        )
+    },
+    {
         date: '2019-10-25',
         title: 'Oscillator Ring',
         desc: (
