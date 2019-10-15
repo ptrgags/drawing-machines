@@ -23,8 +23,6 @@ import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 
 const epitrochoid_tree = new FractalCenteredEpitrochoids();
-const osc_ring = new OscillatorRing();
-
 const triple_osc_throb = new ThrobbingTripleOsc();
 const sliding_turntable = new SlidingTurntable();
 const osc_pyramid = new OscPyramid();

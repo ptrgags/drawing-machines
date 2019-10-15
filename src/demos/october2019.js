@@ -460,7 +460,22 @@ function oct24() {
     });
 }
 
+function oct25() {
+    return new OscillatorRing({
+        trace_length: 1000,
+        num_oscs: 6,
+        rotation_freq: 1,
+        osc_freq: 0.1,
+        radius: 2,
+        wave: new Fourier({
+            amplitudes: [1, 2, 3],
+            frequencies: [2, 4, 8],
+        }),   
+    });
+}
+
 const machines = [
+    oct25(),
     oct24(),
     oct23(),
     oct22(),
