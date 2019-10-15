@@ -482,7 +482,18 @@ function oct26() {
     });
 }
 
+function oct27() {
+    return new SlidingTurntable({
+        trace_length: 4000,
+        angular_frequencies: [
+            2,
+            0.1
+        ],
+    });
+}
+
 const machines = [
+    oct27(),
     oct26(),
     oct25(),
     oct24(),

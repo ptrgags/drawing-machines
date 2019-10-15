@@ -6,15 +6,11 @@ import CentroidViewer from '../machines/CentroidViewer';
 import AverageBox from '../machines/AverageBox';
 
 import OscillatorRing from '../machines/OscillatorRing';
-import SlidingTurntable from '../machines/SlidingTurntable';
 import OscPyramid from '../machines/OscPyramid';
 import FractalCenteredEpitrochoids from '../machines/FractalCenteredEpitrochoids';
 import SpringyDiscs from '../machines/SpringyDiscs';
 import FractalRotation from '../machines/FractalRotation';
 
-import XYZOscillator from '../parts/XYZOscillator';
-import RotatingSphere from '../parts/RotatingSphere';
-import CenteredTrochoid from '../parts/CenteredTrochoid';
 
 import Prefab from '../parts/Prefab';
 import Fourier from '../waves/Fourier';
@@ -22,7 +18,6 @@ import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 
 const epitrochoid_tree = new FractalCenteredEpitrochoids();
-const sliding_turntable = new SlidingTurntable();
 const osc_pyramid = new OscPyramid();
 const springy_discs = new SpringyDiscs();
 const fractal_rotation = new FractalRotation();
