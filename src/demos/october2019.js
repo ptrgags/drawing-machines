@@ -16,6 +16,14 @@ import RoseCurves from '../machines/RoseCurves';
 import RotatingTree from '../machines/RotatingTree';
 import OscillatorOnASphere from '../machines/OscillatorOnASphere';
 import CarDonuts from '../machines/CarDonuts';
+import DoubleCentroidTrochoid from '../machines/DoubleCentroidTrochoid';
+import OscillatorRing from '../machines/OscillatorRing';
+import ThrobbingTripleOsc from '../machines/ThrobbingTripleOsc';
+import SlidingTurntable from '../machines/SlidingTurntable';
+import OscPyramid from '../machines/OscPyramid';
+import FractalCenteredEpitrochoids from '../machines/FractalCenteredEpitrochoids';
+import SpringyDiscs from '../machines/SpringyDiscs';
+import FractalRotation from '../machines/FractalRotation';
 
 import XYZOscillator from '../parts/XYZOscillator';
 import RotatingSphere from '../parts/RotatingSphere';
@@ -438,7 +446,22 @@ function oct23() {
     });
 }
 
+function oct24() {
+    return new DoubleCentroidTrochoid({
+        trace_length: 1000,
+        frame_radius: 1.5,
+        wheel_radius: 0.3,
+        palette: new WavePalette({
+            biases: [0, 0.5, 0.25, 1.0],
+            amplitudes: [0, 0.5, 0.25, 0.0],
+            frequencies: [0, 1, 2, 1],
+            phases: [0, 0, 0, 0]
+        })
+    });
+}
+
 const machines = [
+    oct24(),
     oct23(),
     oct22(),
     oct21(),

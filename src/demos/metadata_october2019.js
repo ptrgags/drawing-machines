@@ -1,5 +1,12 @@
 const metadata = [
     {
+        date: '2019-10-24',
+        title: 'Double Centered Trochoid',
+        desc: (
+            'An epitrochoid and hypotrochoid swirling in lockstep'
+        )
+    },
+    {
         date: '2019-10-23',
         title: 'Car Donuts',
         desc: (

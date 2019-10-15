@@ -4,6 +4,7 @@ import Machine from './Machine';
 import Point from '../parts/Point';
 import Trace from '../parts/Trace';
 import CenteredTrochoid from '../parts/CenteredTrochoid';
+import WavePalette from '../palettes/WavePalette';
 
 export default class DoubleCentroidTrochoid extends Machine {
     get default_parameters() {
@@ -11,6 +12,7 @@ export default class DoubleCentroidTrochoid extends Machine {
             trace_length: 1000,
             frame_radius: 1.5,
             wheel_radius: 0.3,
+            palette: new WavePalette(),
         }
     }
 
@@ -32,13 +34,15 @@ export default class DoubleCentroidTrochoid extends Machine {
         const epi_trace = new Trace({
             source: epi.to_joint('translate_offset'),
             origin: origin.to_joint('translate'),
-            trace_length: parameters.trace_length
+            trace_length: parameters.trace_length,
+            palette: parameters.palette
         });
 
         const hypo_trace = new Trace({
             source: hypo.to_joint('translate_offset'),
             origin: origin.to_joint('translate'),
-            trace_length: parameters.trace_length
+            num_points: parameters.trace_length,
+            palette: parameters.palette
         });
 
         this.add_part(origin);
