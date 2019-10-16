@@ -1,5 +1,12 @@
 const metadata = [
     {
+        date: '2019-10-29',
+        title: 'Fractal Epitrochoids',
+        desc: (
+            'Like the Centered Trochoid Chain, but in a tree structure'
+        )
+    },
+    {
         date: '2019-10-28',
         title: 'Oscillator Pyramid',
         desc: (

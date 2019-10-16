@@ -503,7 +503,17 @@ function oct28() {
     });
 }
 
+function oct29() {
+    return new FractalCenteredEpitrochoids({
+        trace_length: 8000,
+        height: 2,
+        angular_frequencies: [0, 0.1, 0.2, 0.3],
+        radii: [0, 0.25, 0.5, 1],
+    });
+}
+
 const machines = [
+    oct29(),
     oct28(),
     oct27(),
     oct26(),

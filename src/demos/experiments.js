@@ -17,18 +17,12 @@ import Fourier from '../waves/Fourier';
 import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 
-const epitrochoid_tree = new FractalCenteredEpitrochoids();
 const springy_discs = new SpringyDiscs();
 const fractal_rotation = new FractalRotation();
 
 const machines = [
     fractal_rotation,
     springy_discs,
-    epitrochoid_tree,
-    sliding_turntable,
-    osc_pyramid,
-    triple_osc_throb,
-    osc_ring,
 ];
 
 export {machines}
