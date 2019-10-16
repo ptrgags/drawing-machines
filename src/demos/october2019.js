@@ -522,7 +522,23 @@ function oct30() {
     });
 }
 
+function oct31() {
+    return new FractalRotation({
+        trace_length: 1000,
+        height: 2,
+        angular_frequencies: [0.4, 0.2, 0.1],
+        radii: [1, 2, 4],
+        palette: new WavePalette({
+            biases: [0.5, 0.25, 0, 1.0],
+            amplitudes: [0.5, 0.25, 0, 0],
+            frequencies: [3, 1, 0, 1],
+            phases: [0, 0, 0, 0]
+        })
+    });
+}
+
 const machines = [
+    oct31(),
     oct30(),
     oct29(),
     oct28(),

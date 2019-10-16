@@ -4,6 +4,7 @@ import Machine from './Machine';
 import Point from '../parts/Point';
 import Trace from '../parts/Trace';
 import RotatingSphere from '../parts/RotatingSphere';
+import WavePalette from '../palettes/WavePalette';
 
 export default class FractalRotation extends Machine {
     get default_parameters() {
@@ -12,6 +13,7 @@ export default class FractalRotation extends Machine {
             height: 2,
             angular_frequencies: [0.4, 0.2, 0.1],
             radii: [1, 2, 4],
+            palette: new WavePalette()
         }
     }
 
@@ -38,7 +40,8 @@ export default class FractalRotation extends Machine {
             const trace = new Trace({
                 source: sphere.to_joint('translate'),
                 origin: root.to_joint('translate'),
-                num_points: parameters.trace_length
+                num_points: parameters.trace_length,
+                palette: parameters.palette
             });
             this.add_part(trace);
             return;
@@ -71,17 +74,8 @@ export default class FractalRotation extends Machine {
                 new Vector3(0, 1, 0),
                 right);
         });
-        /*
-        const trace = new Trace({
-            source: origin.to_joint('translate'),
-            target: origin.to_joint('translate'),
-            origin: origin.to_joint('translate'),
-            trace_length: parameters.trace_length
-        });
-        */
 
         this.add_part(origin);
-        //this.add_part(trace);
 
         return origin;
     }
