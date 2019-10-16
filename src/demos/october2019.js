@@ -492,7 +492,19 @@ function oct27() {
     });
 }
 
+function oct28() {
+    return new OscPyramid({
+        trace_length: 2000,
+        height: 3,
+        amps: [0, 1, 0.5, 0.25],
+        freqs: [0, 1, 0.5, 0.25],
+        rotate_freq: 2,
+        rotate_radius: 5,
+    });
+}
+
 const machines = [
+    oct28(),
     oct27(),
     oct26(),
     oct25(),

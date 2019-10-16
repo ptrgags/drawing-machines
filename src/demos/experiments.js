@@ -18,7 +18,6 @@ import Sine from '../waves/Sine';
 import Square from '../waves/Square';
 
 const epitrochoid_tree = new FractalCenteredEpitrochoids();
-const osc_pyramid = new OscPyramid();
 const springy_discs = new SpringyDiscs();
 const fractal_rotation = new FractalRotation();
 

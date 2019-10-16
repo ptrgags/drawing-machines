@@ -1,5 +1,13 @@
 const metadata = [
     {
+        date: '2019-10-28',
+        title: 'Oscillator Pyramid',
+        desc: (
+            'A pyramid of oscillators bounces up and down. The pen is '
+            + 'rotating around the centroid'
+        )
+    },
+    {
         date: '2019-10-27',
         title: 'Sliding Turntable',
         desc: (
