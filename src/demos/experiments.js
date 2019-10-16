@@ -5,9 +5,6 @@ import FourierSeries3D from '../machines/FourierSeries3D';
 import CentroidViewer from '../machines/CentroidViewer';
 import AverageBox from '../machines/AverageBox';
 
-import OscillatorRing from '../machines/OscillatorRing';
-import OscPyramid from '../machines/OscPyramid';
-import FractalCenteredEpitrochoids from '../machines/FractalCenteredEpitrochoids';
 import SpringyDiscs from '../machines/SpringyDiscs';
 import FractalRotation from '../machines/FractalRotation';
 
