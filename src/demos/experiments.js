@@ -11,7 +11,6 @@ import FractalCenteredEpitrochoids from '../machines/FractalCenteredEpitrochoids
 import SpringyDiscs from '../machines/SpringyDiscs';
 import FractalRotation from '../machines/FractalRotation';
 
-
 import Prefab from '../parts/Prefab';
 import Fourier from '../waves/Fourier';
 import Sine from '../waves/Sine';

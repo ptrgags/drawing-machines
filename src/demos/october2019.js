@@ -512,7 +512,18 @@ function oct29() {
     });
 }
 
+function oct30() {
+    return new SpringyDiscs({
+        trace_length: 1000,
+        offsets: [-1, -3, -2],
+        angular_frequencies: [1, 2, 1.5],
+        amplitudes: [0.5, 0.25, 1],
+        num_discs: 3,
+    });
+}
+
 const machines = [
+    oct30(),
     oct29(),
     oct28(),
     oct27(),
